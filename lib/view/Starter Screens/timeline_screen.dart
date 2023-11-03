@@ -34,32 +34,68 @@ class TimeLineScreen extends StatelessWidget {
             SizedBox(
               height: hight / 17,
             ),
+            Text(
+              picker.rangeDuration.toString(),
+              style: Theme.of(context).textTheme.displayMedium,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Text(MyStrings.doYouWantToPlanForTheBestDay,
+                style: Theme.of(context).textTheme.displaySmall),
+            SizedBox(
+              height: hight / 23.2,
+            ),
             SvgPicture.asset(Assets.images.timeline.path),
+            SizedBox(
+              height: hight / 23.2,
+            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
                   height: 48,
-                  width: width / 2.3,
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(Assets.icons.arrowLeft.path),
-                    label: Text(MyStrings.next,
-                        style: Theme.of(context).textTheme.labelMedium),
+                  width: width / 2.4,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Get.offAndToNamed(NamedRoute.timeLine);
+                    },
                     style: Theme.of(context).elevatedButtonTheme.style,
+                    child: Text(MyStrings.goToHomePage,
+                        style: Theme.of(context).textTheme.labelMedium),
                   ),
                 ),
                 SizedBox(
                   height: 48,
-                  width: width / 2.3,
-                  child: ElevatedButton.icon(
+                  width: width / 2.4,
+                  child: ElevatedButton(
                     onPressed: () {
                       Get.offAndToNamed(NamedRoute.pickDate);
                     },
-                    icon: SvgPicture.asset(Assets.icons.arrowLeft.path),
-                    label: Text(MyStrings.next,
-                        style: Theme.of(context).textTheme.labelMedium),
-                    style: Theme.of(context).elevatedButtonTheme.style,
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            side: const BorderSide(
+                                color: SolidColors.borderButton, width: 1),
+                            borderRadius: BorderRadius.circular(12))),
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith((states) {
+                          return Natural.defaultColor;
+                        }),
+                        elevation: MaterialStateProperty.all(0)),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(MyStrings.previous,
+                            style: Theme.of(context).textTheme.headlineLarge),
+                        const SizedBox(width: 8),
+                        SvgPicture.asset(
+                          Assets.icons.arrowLeft.path,
+                          color: SolidColors.violetPrimery,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

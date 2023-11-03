@@ -12,5 +12,9 @@ class MyStrings {
   static const String tellMeWeddingTime = "تاریخ عروسی رو بهم میگی";
   static const String chooseWeddingTime = "انتخاب تاریخ عروسی";
   static const String next = "بعدی";
+  static const String previous = "قبلی";
+  static const String goToHomePage = "برو به صفحه اصلی";
   static const String weWed = "We Wed";
+  static const String doYouWantToPlanForTheBestDay =
+      "حالا میخوای برای بهترین روز زندگیت برنامه ریزی کنی؟";
 }

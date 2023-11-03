@@ -55,6 +55,7 @@ class AppThemes {
               fontFamily: 'Iranyekan',
               fontWeight: FontWeight.w500,
             ))),
+
     //////////////////////////////////////////
     fontFamily: 'Iranyekan',
     brightness: Brightness.light,
@@ -67,6 +68,7 @@ class AppThemes {
         fontWeight: FontWeight.w400,
       ),
       displayMedium: TextStyle(
+        
         color: SolidColors.grey900,
         fontSize: 16,
         fontFamily: 'Iranyekan',
@@ -140,6 +142,12 @@ class AppThemes {
       ),
       labelMedium: TextStyle(
         color: Colors.white,
+        fontSize: 14,
+        fontFamily: 'Iranyekan',
+        fontWeight: FontWeight.w500,
+      ),
+      headlineLarge: TextStyle(
+        color: SolidColors.violetPrimery,
         fontSize: 14,
         fontFamily: 'Iranyekan',
         fontWeight: FontWeight.w500,

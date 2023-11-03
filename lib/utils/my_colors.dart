@@ -23,6 +23,7 @@ class SolidColors {
   static const Color grey700 = Color(0xFF393038);
   static const Color grey800 = Color(0xFF2C252B);
   static const Color grey900 = Color(0xFF221C21);
+  static const Color borderButton = Color(0x4C805780);
 
   static const Color purple50 = Color(0xFFF8F6F8);
   static const Color purple100 = Color(0xFFE8E4E8);

@@ -101,15 +101,21 @@ class DatePickerScreen extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 48,
-                  width: width / 2.3,
-                  child: ElevatedButton.icon(
+                  width: width / 2.4,
+                  child: ElevatedButton(
                     onPressed: () {
                       Get.offAndToNamed(NamedRoute.timeLine);
                     },
-                    icon: SvgPicture.asset(Assets.icons.arrowLeft.path),
-                    label: Text(MyStrings.next,
-                        style: Theme.of(context).textTheme.labelMedium),
                     style: Theme.of(context).elevatedButtonTheme.style,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(MyStrings.next,
+                            style: Theme.of(context).textTheme.labelMedium),
+                        const SizedBox(width: 8),
+                        SvgPicture.asset(Assets.icons.arrowLeft.path),
+                      ],
+                    ),
                   ),
                 ),
               ],
