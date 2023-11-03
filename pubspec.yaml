@@ -1,0 +1,58 @@
+name: we_wed
+description: Wedding ToDoList
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get: ^4.6.6
+  flutter_svg: ^1.0.3
+  firebase_core: ^2.20.0
+  flutter_spinkit: ^5.2.0
+  firebase_auth: ^4.12.0
+  cloud_firestore: ^4.12.1
+  firebase_storage: ^11.4.0
+  linear_progress_bar: ^1.1.0
+  persian_datetime_picker: ^2.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner:
+  flutter_gen_runner:
+
+flutter_gen:
+  integrations:
+    flutter_svg: true
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+  # example:
+  fonts:
+    - family: Iranyekan
+      fonts:
+        - asset: assets/fonts/Iranyekan-thin.ttf
+          weight: 100
+        - asset: assets/fonts/Iranyekan-light.ttf
+          weight: 300
+        - asset: assets/fonts/Iranyekan.ttf
+          weight: 400
+        - asset: assets/fonts/Iranyekan-medium.ttf
+          weight: 500
+        - asset: assets/fonts/Iranyekan-bold.ttf
+          weight: 600
+        - asset: assets/fonts/Iranyekan-extrabold.ttf
+          weight: 800
+        - asset: assets/fonts/Iranyekan-black.ttf
+          weight: 900
