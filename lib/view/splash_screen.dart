@@ -3,7 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:we_wed/utils/my_colors.dart';
 import '../gen/assets.gen.dart';
 import 'package:get/get.dart';
-import '../route_manager/names.dart';
+import '../routes/names.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

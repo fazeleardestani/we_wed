@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:we_wed/component/text_field.dart';
-import 'package:we_wed/route_manager/names.dart';
+import 'package:we_wed/routes/names.dart';
 import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
 import '../../controller/login_controller.dart';

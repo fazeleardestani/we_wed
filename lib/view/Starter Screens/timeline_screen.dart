@@ -6,7 +6,7 @@ import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
 import '../../controller/date_picker_controller.dart';
 import '../../gen/assets.gen.dart';
-import '../../route_manager/names.dart';
+import '../../routes/names.dart';
 
 class TimeLineScreen extends StatelessWidget {
   final picker = Get.put(DatePickerController());
@@ -59,7 +59,7 @@ class TimeLineScreen extends StatelessWidget {
                   width: width / 2.4,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Get.offAndToNamed(NamedRoute.timeLine);
+                      Get.offAndToNamed(NamedRoute.mainScreen);
                     },
                     style: Theme.of(context).elevatedButtonTheme.style,
                     child: Text(MyStrings.goToHomePage,

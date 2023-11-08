@@ -6,7 +6,7 @@ import 'package:we_wed/controller/register_controller.dart';
 import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
 import '../../gen/assets.gen.dart';
-import '../../route_manager/names.dart';
+import '../../routes/names.dart';
 
 class RegisterScreen extends StatelessWidget {
   final RegisterController controller = Get.put(RegisterController());

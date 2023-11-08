@@ -11,72 +11,84 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 
-class $AssetsFontsGen {
-  const $AssetsFontsGen();
-
-  /// File path: assets/fonts/IRAN.ttf
-  String get iran => 'assets/fonts/IRAN.ttf';
-
-  /// File path: assets/fonts/IRANBlack.ttf
-  String get iRANBlack => 'assets/fonts/IRANBlack.ttf';
-
-  /// File path: assets/fonts/IRANBold.ttf
-  String get iRANBold => 'assets/fonts/IRANBold.ttf';
-
-  /// File path: assets/fonts/IRAN_SemiBold.ttf
-  String get iRANSemiBold => 'assets/fonts/IRAN_SemiBold.ttf';
-
-  /// File path: assets/fonts/Iranyekan-black.ttf
-  String get iranyekanBlack => 'assets/fonts/Iranyekan-black.ttf';
-
-  /// File path: assets/fonts/Iranyekan-bold.ttf
-  String get iranyekanBold => 'assets/fonts/Iranyekan-bold.ttf';
-
-  /// File path: assets/fonts/Iranyekan-extrabold.ttf
-  String get iranyekanExtrabold => 'assets/fonts/Iranyekan-extrabold.ttf';
-
-  /// File path: assets/fonts/Iranyekan-light.ttf
-  String get iranyekanLight => 'assets/fonts/Iranyekan-light.ttf';
-
-  /// File path: assets/fonts/Iranyekan-medium.ttf
-  String get iranyekanMedium => 'assets/fonts/Iranyekan-medium.ttf';
-
-  /// File path: assets/fonts/Iranyekan-thin.ttf
-  String get iranyekanThin => 'assets/fonts/Iranyekan-thin.ttf';
-
-  /// File path: assets/fonts/Iranyekan.ttf
-  String get iranyekan => 'assets/fonts/Iranyekan.ttf';
-
-  /// List of all assets
-  List<String> get values => [
-        iran,
-        iRANBlack,
-        iRANBold,
-        iRANSemiBold,
-        iranyekanBlack,
-        iranyekanBold,
-        iranyekanExtrabold,
-        iranyekanLight,
-        iranyekanMedium,
-        iranyekanThin,
-        iranyekan
-      ];
-}
-
 class $AssetsIconsGen {
   const $AssetsIconsGen();
+
+  /// File path: assets/icons/arayeshgah-category.svg
+  SvgGenImage get arayeshgahCategory =>
+      const SvgGenImage('assets/icons/arayeshgah-category.svg');
 
   /// File path: assets/icons/arrow-left.svg
   SvgGenImage get arrowLeft => const SvgGenImage('assets/icons/arrow-left.svg');
 
+  /// File path: assets/icons/bloom-left.svg
+  SvgGenImage get bloomLeft => const SvgGenImage('assets/icons/bloom-left.svg');
+
+  /// File path: assets/icons/bloom-right.svg
+  SvgGenImage get bloomRight =>
+      const SvgGenImage('assets/icons/bloom-right.svg');
+
+  /// File path: assets/icons/cake-category.svg
+  SvgGenImage get cakeCategory =>
+      const SvgGenImage('assets/icons/cake-category.svg');
+
   /// File path: assets/icons/calendar.svg
   SvgGenImage get calendar => const SvgGenImage('assets/icons/calendar.svg');
+
+  /// File path: assets/icons/gol-category.svg
+  SvgGenImage get golCategory =>
+      const SvgGenImage('assets/icons/gol-category.svg');
 
   /// File path: assets/icons/google.svg
   SvgGenImage get google => const SvgGenImage('assets/icons/google.svg');
 
+  /// File path: assets/icons/home.svg
+  SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
+
+  /// File path: assets/icons/lebas-category.svg
+  SvgGenImage get lebasCategory =>
+      const SvgGenImage('assets/icons/lebas-category.svg');
+
+  /// File path: assets/icons/mashin-category.svg
+  SvgGenImage get mashinCategory =>
+      const SvgGenImage('assets/icons/mashin-category.svg');
+
+  /// File path: assets/icons/photography-category.svg
+  SvgGenImage get photographyCategory =>
+      const SvgGenImage('assets/icons/photography-category.svg');
+
+  /// File path: assets/icons/profile.svg
+  SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
+
+  /// File path: assets/icons/services.svg
+  SvgGenImage get services => const SvgGenImage('assets/icons/services.svg');
+
+  /// File path: assets/icons/talar-category.svg
+  SvgGenImage get talarCategory =>
+      const SvgGenImage('assets/icons/talar-category.svg');
+
+  /// File path: assets/icons/tasks.svg
+  SvgGenImage get tasks => const SvgGenImage('assets/icons/tasks.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [arrowLeft, calendar, google];
+  List<SvgGenImage> get values => [
+        arayeshgahCategory,
+        arrowLeft,
+        bloomLeft,
+        bloomRight,
+        cakeCategory,
+        calendar,
+        golCategory,
+        google,
+        home,
+        lebasCategory,
+        mashinCategory,
+        photographyCategory,
+        profile,
+        services,
+        talarCategory,
+        tasks
+      ];
 }
 
 class $AssetsImagesGen {
@@ -85,21 +97,43 @@ class $AssetsImagesGen {
   /// File path: assets/images/calendar.svg
   SvgGenImage get calendar => const SvgGenImage('assets/images/calendar.svg');
 
+  /// File path: assets/images/gradiant-main.svg
+  SvgGenImage get gradiantMain =>
+      const SvgGenImage('assets/images/gradiant-main.svg');
+
   /// File path: assets/images/timeline.svg
   SvgGenImage get timeline => const SvgGenImage('assets/images/timeline.svg');
+
+  /// File path: assets/images/wedding-card.svg
+  SvgGenImage get weddingCard =>
+      const SvgGenImage('assets/images/wedding-card.svg');
+
+  /// File path: assets/images/wedding-planner.svg
+  SvgGenImage get weddingPlanner =>
+      const SvgGenImage('assets/images/wedding-planner.svg');
+
+  /// File path: assets/images/wewed.svg
+  SvgGenImage get wewed => const SvgGenImage('assets/images/wewed.svg');
 
   /// File path: assets/images/wewed_logo.svg
   SvgGenImage get wewedLogo =>
       const SvgGenImage('assets/images/wewed_logo.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [calendar, timeline, wewedLogo];
+  List<SvgGenImage> get values => [
+        calendar,
+        gradiantMain,
+        timeline,
+        weddingCard,
+        weddingPlanner,
+        wewed,
+        wewedLogo
+      ];
 }
 
 class Assets {
   Assets._();
 
-  static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
@@ -218,6 +252,7 @@ class SvgGenImage {
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
       theme: theme,
+      colorFilter: colorFilter,
       color: color,
       colorBlendMode: colorBlendMode,
       clipBehavior: clipBehavior,

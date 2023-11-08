@@ -17,4 +17,14 @@ class MyStrings {
   static const String weWed = "We Wed";
   static const String doYouWantToPlanForTheBestDay =
       "حالا میخوای برای بهترین روز زندگیت برنامه ریزی کنی؟";
+  static const String talarCategory = "تالار";
+  static const String arayeshgahCategory = "آرایشگاه";
+  static const String photographyCategory = "عکاسی و فیلم برداری";
+  static const String carCategory = "گل و ماشین عروس";
+  static const String cakeCategory = "کیک عروسی";
+  static const String lebasCategory = "لباس عروس";
+  static const String profile = "پروفایل";
+  static const String home = "خانه";
+  static const String services = "خدمات";
+  static const String tasks = "لیست کارها";
 }

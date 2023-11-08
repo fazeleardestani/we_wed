@@ -14,7 +14,7 @@ class DatePickerController extends GetxController {
     );
 
     if (date != null) {
-      Duration range = JalaliRange(start: Jalali.now(), end: date!).duration;
+      Duration range = JalaliRange(start: Jalali.now(), end: date).duration;
       // range.inDays.toString()
 
       rangeDuration.value =
