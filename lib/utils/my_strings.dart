@@ -1,5 +1,5 @@
 class MyStrings {
-  static const String fullName = "نام و نام خانوادگی";
+  static const String name = "نام";
   static const String emailAddress = "ایمیل";
   static const String password = "رمز عبور";
   static const String verifyPassword = "تکرار رمز عبور";
@@ -27,4 +27,6 @@ class MyStrings {
   static const String home = "خانه";
   static const String services = "خدمات";
   static const String tasks = "لیست کارها";
+  static const String editInformation = "ویرایش اطلاعات";
+  static const String logout = "خروج از حساب کاربری";
 }

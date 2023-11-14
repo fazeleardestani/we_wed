@@ -104,6 +104,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/timeline.svg
   SvgGenImage get timeline => const SvgGenImage('assets/images/timeline.svg');
 
+  /// File path: assets/images/user-profile.svg
+  SvgGenImage get userProfile =>
+      const SvgGenImage('assets/images/user-profile.svg');
+
   /// File path: assets/images/wedding-card.svg
   SvgGenImage get weddingCard =>
       const SvgGenImage('assets/images/wedding-card.svg');
@@ -124,6 +128,7 @@ class $AssetsImagesGen {
         calendar,
         gradiantMain,
         timeline,
+        userProfile,
         weddingCard,
         weddingPlanner,
         wewed,

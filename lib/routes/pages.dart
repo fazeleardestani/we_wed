@@ -2,11 +2,13 @@ import 'package:get/get.dart';
 import 'package:we_wed/routes/names.dart';
 import 'package:we_wed/view/Main%20Screens/home_screen.dart';
 import 'package:we_wed/view/Main%20Screens/main_screen.dart';
+import 'package:we_wed/view/Main%20Screens/profile_screen.dart';
 import 'package:we_wed/view/Starter Screens/date_picker_screen.dart';
 import 'package:we_wed/view/Starter Screens/login_screen.dart';
+import 'package:we_wed/view/splash_screen.dart';
 import '../view/Starter Screens/register_screen.dart';
 import '../view/Starter Screens/timeline_screen.dart';
-import '../view/splash_screen.dart';
+// import '../view/splash_screen.dart';
 
 class Pages {
   Pages._();
@@ -38,7 +40,7 @@ class Pages {
     ),
     GetPage(
       name: NamedRoute.homeScreen,
-      page: () => HomeScreen(),
+      page: () => const HomeScreen(),
     ),
   ];
 }

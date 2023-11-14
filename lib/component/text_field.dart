@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:we_wed/utils/my_colors.dart';
 
-class CustomTextFieldController extends GetxController {
-  var textEditingController = TextEditingController();
-}
 
 // ignore: must_be_immutable
 class CustomTextFieldWidget extends StatelessWidget {
-  final TextEditingController textEditingController;
+  final TextEditingController? textEditingController;
   final bool isPass;
+  final bool readOnly;
   final TextInputType textInputType;
   String? hintText;
   Color? hintTextColor;
@@ -24,7 +21,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   double? padding;
 
   CustomTextFieldWidget({
-    Key? key,
+    super.key,
     this.padding,
     this.heightScale,
     this.widthtScale,
@@ -38,18 +35,20 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.width,
     required this.textEditingController,
     this.isPass = false,
+    this.readOnly = false,
     required this.textInputType,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(CustomTextFieldController());
 
     return SizedBox(
       width: width,
       child: TextFormField(
+        
         style: const TextStyle(fontFamily: 'IRANYekan'),
         obscureText: isPass,
+        readOnly: readOnly,
         keyboardType: textInputType,
         controller: textEditingController,
         onChanged: (value) {
