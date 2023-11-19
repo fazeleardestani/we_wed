@@ -104,6 +104,7 @@ class DatePickerScreen extends StatelessWidget {
                   width: width / 2.4,
                   child: ElevatedButton(
                     onPressed: () {
+                      // await user?.updateDisplayName("Jane Q. User");
                       Get.offAndToNamed(NamedRoute.timeLine);
                     },
                     style: Theme.of(context).elevatedButtonTheme.style,

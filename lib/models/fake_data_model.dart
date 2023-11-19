@@ -18,11 +18,13 @@ class UserModel {
   String name;
   String email;
   String password;
+  String weddingTime;
 
   UserModel({
     required this.id,
     required this.name,
     required this.email,
     required this.password,
+    required this.weddingTime,
   });
 }

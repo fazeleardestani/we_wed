@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:we_wed/utils/my_colors.dart';
@@ -16,9 +17,36 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      Get.offAndToNamed(NamedRoute.register);
-      //TODO: condition for start
-      // user.status==true ? Get.onAndToNamed(NamedRoute.mainscreen) : Get.onAndToNamed(NamedRoute.Register);
+      // FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      //   if (user == null) {
+      //     Get.offAndToNamed(NamedRoute.signUp);
+      //   } else {
+      //     Get.offAndToNamed(NamedRoute.mainScreen);
+      //   }
+      // });
+      // StreamBuilder(
+      //   stream: FirebaseAuth.instance.authStateChanges(),
+      //   builder: (context, snapshot) {
+      //     if (snapshot.connectionState == ConnectionState.active) {
+      //       if (snapshot.hasData) {
+      //         return MainScreen();
+      //       } else if (snapshot.hasError) {
+      //         Center(
+      //           child: Text('${snapshot.error}'),
+      //         );
+      //       }
+      //     }
+      //     if (snapshot.connectionState == ConnectionState.waiting) {
+      //       return const Center(
+      //         child: CircularProgressIndicator(
+      //           color: SolidColors.violetPrimery,
+      //         ),
+      //       );
+      //     }
+      //     return SignUpScreen();
+      //   },
+      // );
+      Get.offAndToNamed(NamedRoute.signUp);
     });
     super.initState();
   }

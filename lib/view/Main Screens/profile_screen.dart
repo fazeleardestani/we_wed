@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:we_wed/component/text_field.dart';
+import 'package:we_wed/widgets/text_field.dart';
 import 'package:we_wed/models/fake_data.dart';
 import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
@@ -14,27 +11,19 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     RxBool nameReadOnly = true.obs;
     RxBool passwordReadOnly = true.obs;
     RxBool emailReadOnly = true.obs;
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.fromLTRB(20, 20, 20, height / 10.5),
+        padding: EdgeInsets.fromLTRB(20, height / 34, 20, 0),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: profileImage(height, width),
-            ),
-            const SizedBox(
-              height: 32,
-            ),
             profileTextFiled(context, height, nameReadOnly, TextInputType.name,
                 userList[0].name, MyStrings.name),
-            const SizedBox(
-              height: 16,
+            SizedBox(
+              height: height / 34,
             ),
             profileTextFiled(
                 context,
@@ -43,23 +32,23 @@ class ProfileScreen extends StatelessWidget {
                 TextInputType.emailAddress,
                 userList[0].email,
                 MyStrings.emailAddress),
-            const SizedBox(
-              height: 16,
+            SizedBox(
+              height: height / 34,
             ),
             profileTextFiled(context, height, passwordReadOnly,
                 TextInputType.text, userList[0].password, MyStrings.password),
-            const SizedBox(
-              height: 16,
+            SizedBox(
+              height: height / 34,
             ),
             profileTextFiled(
                 context,
                 height,
                 emailReadOnly,
                 TextInputType.datetime,
-                userList[0].password,
-                MyStrings.chooseWeddingTime),
-            const SizedBox(
-              height: 16,
+                userList[0].weddingTime,
+                MyStrings.weddingTime),
+            SizedBox(
+              height: height / 34,
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
@@ -93,7 +82,10 @@ class ProfileScreen extends StatelessWidget {
                     fontFamily: 'Iranyekan',
                     fontWeight: FontWeight.w500,
                   ),
-                ))
+                )),
+                SizedBox(
+                  height: height / 10.5,
+                )
           ],
         ),
       )),
@@ -123,27 +115,4 @@ class ProfileScreen extends StatelessWidget {
       ],
     );
   }
-}
-
-Stack profileImage(double height, double width) {
-  return Stack(children: [
-    Container(
-      height: height / 8,
-      width: width / 4.6,
-      decoration: const BoxDecoration(
-        color: SolidColors.violet50,
-        borderRadius: BorderRadius.all(Radius.circular(100)),
-      ),
-    ),
-    Positioned(
-      height: height / 9.2,
-      width: width / 4.7,
-      child: SvgPicture.asset(
-        userList[0].imagePath,
-        height: height / 6,
-        colorFilter:
-            const ColorFilter.mode(SolidColors.violet600, BlendMode.srcIn),
-      ),
-    ),
-  ]);
 }

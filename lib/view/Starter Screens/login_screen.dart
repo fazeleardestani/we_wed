@@ -1,22 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:we_wed/component/text_field.dart';
+import 'package:we_wed/resources/auth_methods.dart';
+import 'package:we_wed/widgets/show_snack_bar.dart';
+import 'package:we_wed/widgets/text_field.dart';
 import 'package:we_wed/routes/names.dart';
 import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
 import '../../controller/login_controller.dart';
 import '../../gen/assets.gen.dart';
 
-class LoginScreen extends StatelessWidget {
-  final LoginController controller = Get.put(LoginController());
+class LogInScreen extends StatelessWidget {
+  final logInController controller = Get.put(logInController());
 
-  LoginScreen({super.key});
+  LogInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     double hight = MediaQuery.of(context).size.height;
     // double width = MediaQuery.of(context).size.width;
+
+    void loginUser() async {
+      String res = await AuthMethods().loginUser(
+          email: controller.emailController.text,
+          password: controller.passwordController.text);
+      if (res != 'success') {
+        // ignore: use_build_context_synchronously
+        showSnackBar(context, res);
+      } else {
+        Get.offAndToNamed(NamedRoute.mainScreen);
+      }
+    }
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -61,7 +76,9 @@ class LoginScreen extends StatelessWidget {
                       BoxDecoration(borderRadius: BorderRadius.circular(12)),
                   width: double.maxFinite,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      loginUser();
+                    },
                     child: Text(
                       MyStrings.login,
                       style: Theme.of(context).textTheme.labelMedium,
@@ -81,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     TextButton(
                         onPressed: () {
-                          Get.offAndToNamed(NamedRoute.register);
+                          Get.offAndToNamed(NamedRoute.signUp);
                         },
                         child: const Text(
                           MyStrings.register,

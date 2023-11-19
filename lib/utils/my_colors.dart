@@ -49,6 +49,10 @@ class Semantic {
   static const Color infoLight = Color(0xFF55AEFF);
   static const Color infoMain = Color(0xFF2B9AFF);
   static const Color infoDark = Color(0xFF278BE6);
+
+  static const Color errorLight = Color(0xFFFFFBFA);
+  static const Color errorMain = Color(0xFFF34141);
+  static const Color errorDark = Color(0xFFCD3636);
 }
 
 class Shades {

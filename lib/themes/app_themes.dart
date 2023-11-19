@@ -3,6 +3,19 @@ import '../utils/my_colors.dart';
 
 class AppThemes {
   static ThemeData lightTheme = ThemeData(
+    snackBarTheme: const SnackBarThemeData(
+        backgroundColor: Semantic.errorLight,
+        contentTextStyle: TextStyle(
+            color: Semantic.errorMain,
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+            fontFamily: 'Iranyekan'),
+        closeIconColor: Semantic.errorDark,
+        showCloseIcon: true,
+        
+        shape: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.all(Radius.circular(12)))),
     ////////////////////////////////////////////
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: const TextStyle(
@@ -68,7 +81,6 @@ class AppThemes {
         fontWeight: FontWeight.w400,
       ),
       displayMedium: TextStyle(
-        
         color: SolidColors.grey900,
         fontSize: 16,
         fontFamily: 'Iranyekan',

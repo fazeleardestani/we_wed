@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:we_wed/component/show_snack_bar.dart';
+import 'package:we_wed/widgets/show_snack_bar.dart';
 
 class FirebaseAuthMethods {
   final FirebaseAuth _auth;
@@ -16,6 +16,7 @@ class FirebaseAuthMethods {
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
       if (e.code == "weak-password") {
+        // ignore: use_build_context_synchronously
         showSnackBar(context, "its weak password");
       }
     }

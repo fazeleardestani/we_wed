@@ -1,38 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:we_wed/component/text_field.dart';
-import 'package:we_wed/controller/register_controller.dart';
+import 'package:we_wed/resources/auth_methods.dart';
+import 'package:we_wed/widgets/show_snack_bar.dart';
+import 'package:we_wed/widgets/text_field.dart';
+import 'package:we_wed/controller/signup_controller.dart';
 import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
 import '../../gen/assets.gen.dart';
 import '../../routes/names.dart';
 
-class RegisterScreen extends StatelessWidget {
-  final RegisterController controller = Get.put(RegisterController());
+class SignUpScreen extends StatelessWidget {
+  final SignUpController controller = Get.put(SignUpController());
 
-  RegisterScreen({super.key});
+  SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // void registerUser() async {
-    //   try {
-    //   final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-    //     email: controller.emailController.text,
-    //     password: controller.passwordController.text,
-    //   );
-    // } on FirebaseAuthException catch (e) {
-    //   if (e.code == 'weak-password') {
-    //     print('The password provided is too weak.');
-    //   } else if (e.code == 'email-already-in-use') {
-    //     print('The account already exists for that email.');
-    //   }
-    // } catch (e) {
-    //   print(e);
-    // }
-    // }
+    void signUPUser() async {
+      String res = await AuthMethods().signUPUser(
+          name: controller.nameController.text,
+          email: controller.emailController.text,
+          password: controller.passwordController.text);
+      if (res != 'success') {
+        // ignore: use_build_context_synchronously
+        showSnackBar(context, res);
+      } else {
+        Get.offAndToNamed(NamedRoute.pickDate);
+      }
+    }
 
-    double hight = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
     // double width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -41,23 +39,35 @@ class RegisterScreen extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(Assets.images.wewedLogo.path),
+            Image.asset(Assets.images.wewedLogo.path, height: height / 5),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                CustomTextFieldWidget(
+                  hintText: MyStrings.name,
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  boxColor: Natural.defaultColor,
+                  borderColor: SolidColors.grey50,
+                  height: height / 16.91,
+                  textEditingController: controller.nameController,
+                  textInputType: TextInputType.name,
+                ),
+                SizedBox(
+                  height: height / 33.9,
+                ),
                 CustomTextFieldWidget(
                   hintText: MyStrings.emailAddress,
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   boxColor: Natural.defaultColor,
                   borderColor: SolidColors.grey50,
-                  height: hight / 16.91,
+                  height: height / 16.91,
                   textEditingController: controller.emailController,
                   textInputType: TextInputType.emailAddress,
                 ),
-                const SizedBox(
-                  height: 24,
+                SizedBox(
+                  height: height / 33.9,
                 ),
                 CustomTextFieldWidget(
                   textEditingController: controller.passwordController,
@@ -67,10 +77,23 @@ class RegisterScreen extends StatelessWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   boxColor: Natural.defaultColor,
                   borderColor: SolidColors.grey50,
-                  height: hight / 16.91,
+                  height: height / 16.91,
                 ),
-                const SizedBox(
-                  height: 24,
+                SizedBox(
+                  height: height / 33.9,
+                ),
+                CustomTextFieldWidget(
+                  hintText: MyStrings.confirmPassword,
+                  isPass: true,
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  boxColor: Natural.defaultColor,
+                  borderColor: SolidColors.grey50,
+                  height: height / 16.91,
+                  textEditingController: controller.confirmPasswordController,
+                  textInputType: TextInputType.text,
+                ),
+                SizedBox(
+                  height: height / 33.9,
                 ),
                 Container(
                   height: 48,
@@ -79,9 +102,13 @@ class RegisterScreen extends StatelessWidget {
                   width: double.maxFinite,
                   child: ElevatedButton(
                     style: Theme.of(context).elevatedButtonTheme.style,
-                    //TODO: on pressed register
-                    onPressed: () {
-                      Get.offAndToNamed(NamedRoute.pickDate);
+                    onPressed: () async {
+                      if (controller.passwordController.text ==
+                          controller.confirmPasswordController.text) {
+                        signUPUser();
+                      } else {
+                        showSnackBar(context, MyStrings.checkPassword);
+                      }
                     },
                     child: Text(
                       MyStrings.register,
@@ -89,8 +116,8 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 12,
+                SizedBox(
+                  height: height / 67.67,
                 ),
                 Row(
                   // crossAxisAlignment: CrossAxisAlignment.center,
@@ -102,7 +129,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     TextButton(
                         onPressed: () {
-                          Get.offAndToNamed(NamedRoute.login);
+                          Get.offAndToNamed(NamedRoute.signIn);
                         },
                         child: const Text(
                           MyStrings.login,
@@ -115,15 +142,15 @@ class RegisterScreen extends StatelessWidget {
                         ))
                   ],
                 ),
-                const SizedBox(
-                  height: 16,
+                SizedBox(
+                  height: height / 90,
                 ),
                 const Divider(
                   color: SolidColors.grey100,
                   thickness: 1,
                 ),
-                const SizedBox(
-                  height: 16,
+                SizedBox(
+                  height: height / 70,
                 ),
                 Container(
                   height: 48,

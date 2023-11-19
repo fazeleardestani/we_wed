@@ -9,6 +9,7 @@ import 'package:we_wed/view/Main%20Screens/tasks_screen.dart';
 import '../../gen/assets.gen.dart';
 import '../../utils/my_colors.dart';
 
+// ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
   RxInt selectedPageIndex = 1.obs;
   MainScreen({super.key});
@@ -16,6 +17,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Natural.paper,
         appBar: AppBar(
@@ -31,18 +33,16 @@ class MainScreen extends StatelessWidget {
         body: Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            Positioned(
-              child: Center(
-                child: Obx(
-                  () => IndexedStack(
-                    index: selectedPageIndex.value,
-                    children: const [
-                      ProfileScreen(),
-                      HomeScreen(),
-                      ServiceScreen(),
-                      TasksScreen()
-                    ],
-                  ),
+            Center(
+              child: Obx(
+                () => IndexedStack(
+                  index: selectedPageIndex.value,
+                  children: const [
+                    ProfileScreen(),
+                    HomeScreen(),
+                    ServiceScreen(),
+                    TasksScreen()
+                  ],
                 ),
               ),
             ),
@@ -50,12 +50,14 @@ class MainScreen extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
+
                 child: BottomNavigation(
                     changeScreen: (int value) {
                       selectedPageIndex.value = value;
                       return value;
                     },
                     height: height,
+                    width: width,
                     selectedPageIndex: selectedPageIndex))
           ],
         ));
@@ -66,27 +68,29 @@ class BottomNavigation extends StatelessWidget {
   const BottomNavigation({
     super.key,
     required this.height,
+    required this.width,
     required this.changeScreen,
     required this.selectedPageIndex,
   });
 
   final double height;
+  final double width;
   final Function(int value) changeScreen;
   final RxInt selectedPageIndex;
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0,
-      right: 0,
-      left: 0,
-      child: Stack(children: [
-        SizedBox(
-          height: height / 12.32,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              InkWell(
+    return Stack(children: [
+      SizedBox(
+        height: height / 12.32,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(
+              height: height/15.03,
+              width: width/6.94,
+              child: InkWell(
+                autofocus: false,
                 onTap: () => changeScreen(0),
                 child: Column(
                   children: [
@@ -112,88 +116,88 @@ class BottomNavigation extends StatelessWidget {
                   ],
                 ),
               ),
-              InkWell(
-                onTap: () => changeScreen(1),
-                child: Column(
-                  children: [
-                    Obx(
-                      () => SvgPicture.asset(Assets.icons.home.path,
-                          height: 24,
-                          width: 24,
-                          colorFilter: ColorFilter.mode(
-                            selectedPageIndex.value == 1
-                                ? SolidColors.violetPrimery
-                                : SolidColors.grey200,
-                            BlendMode.srcIn,
-                          )),
-                    ),
-                    Obx(() => Text(
-                          MyStrings.home,
-                          style: selectedPageIndex.value == 1
-                              ? Theme.of(context).textTheme.labelSmall
-                              : Theme.of(context)
-                                  .inputDecorationTheme
-                                  .labelStyle,
-                        ))
-                  ],
-                ),
+            ),
+            InkWell(
+              onTap: () => changeScreen(1),
+              child: Column(
+                children: [
+                  Obx(
+                    () => SvgPicture.asset(Assets.icons.home.path,
+                        height: 24,
+                        width: 24,
+                        colorFilter: ColorFilter.mode(
+                          selectedPageIndex.value == 1
+                              ? SolidColors.violetPrimery
+                              : SolidColors.grey200,
+                          BlendMode.srcIn,
+                        )),
+                  ),
+                  Obx(() => Text(
+                        MyStrings.home,
+                        style: selectedPageIndex.value == 1
+                            ? Theme.of(context).textTheme.labelSmall
+                            : Theme.of(context)
+                                .inputDecorationTheme
+                                .labelStyle,
+                      ))
+                ],
               ),
-              InkWell(
-                onTap: () => changeScreen(2),
-                child: Column(
-                  children: [
-                    Obx(
-                      () => SvgPicture.asset(Assets.icons.services.path,
-                          height: 24,
-                          width: 24,
-                          colorFilter: ColorFilter.mode(
-                            selectedPageIndex.value == 2
-                                ? SolidColors.violetPrimery
-                                : SolidColors.grey200,
-                            BlendMode.srcIn,
-                          )),
-                    ),
-                    Obx(() => Text(
-                          MyStrings.services,
-                          style: selectedPageIndex.value == 2
-                              ? Theme.of(context).textTheme.labelSmall
-                              : Theme.of(context)
-                                  .inputDecorationTheme
-                                  .labelStyle,
-                        ))
-                  ],
-                ),
+            ),
+            InkWell(
+              onTap: () => changeScreen(2),
+              child: Column(
+                children: [
+                  Obx(
+                    () => SvgPicture.asset(Assets.icons.services.path,
+                        height: 24,
+                        width: 24,
+                        colorFilter: ColorFilter.mode(
+                          selectedPageIndex.value == 2
+                              ? SolidColors.violetPrimery
+                              : SolidColors.grey200,
+                          BlendMode.srcIn,
+                        )),
+                  ),
+                  Obx(() => Text(
+                        MyStrings.services,
+                        style: selectedPageIndex.value == 2
+                            ? Theme.of(context).textTheme.labelSmall
+                            : Theme.of(context)
+                                .inputDecorationTheme
+                                .labelStyle,
+                      ))
+                ],
               ),
-              InkWell(
-                onTap: () => changeScreen(3),
-                child: Column(
-                  children: [
-                    Obx(
-                      () => SvgPicture.asset(Assets.icons.tasks.path,
-                          height: 24,
-                          width: 24,
-                          colorFilter: ColorFilter.mode(
-                            selectedPageIndex.value == 3
-                                ? SolidColors.violetPrimery
-                                : SolidColors.grey200,
-                            BlendMode.srcIn,
-                          )),
-                    ),
-                    Obx(() => Text(
-                          MyStrings.tasks,
-                          style: selectedPageIndex.value == 3
-                              ? Theme.of(context).textTheme.labelSmall
-                              : Theme.of(context)
-                                  .inputDecorationTheme
-                                  .labelStyle,
-                        ))
-                  ],
-                ),
+            ),
+            InkWell(
+              onTap: () => changeScreen(3),
+              child: Column(
+                children: [
+                  Obx(
+                    () => SvgPicture.asset(Assets.icons.tasks.path,
+                        height: 24,
+                        width: 24,
+                        colorFilter: ColorFilter.mode(
+                          selectedPageIndex.value == 3
+                              ? SolidColors.violetPrimery
+                              : SolidColors.grey200,
+                          BlendMode.srcIn,
+                        )),
+                  ),
+                  Obx(() => Text(
+                        MyStrings.tasks,
+                        style: selectedPageIndex.value == 3
+                            ? Theme.of(context).textTheme.labelSmall
+                            : Theme.of(context)
+                                .inputDecorationTheme
+                                .labelStyle,
+                      ))
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ]),
-    );
+      ),
+    ]);
   }
 }

@@ -47,7 +47,10 @@ class TimeLineScreen extends StatelessWidget {
             SizedBox(
               height: hight / 23.2,
             ),
-            SvgPicture.asset(Assets.images.timeline.path),
+            SvgPicture.asset(
+              Assets.images.timeline.path,
+              height: hight / 2,
+            ),
             SizedBox(
               height: hight / 23.2,
             ),
