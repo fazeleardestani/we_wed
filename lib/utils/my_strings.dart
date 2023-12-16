@@ -29,6 +29,7 @@ class MyStrings {
   static const String services = "خدمات";
   static const String tasks = "لیست کارها";
   static const String editInformation = "ویرایش اطلاعات";
+  static const String saveChanges = "ذخیره تغییرات";
   static const String logout = "خروج از حساب کاربری";
   static const String invalidEmail = "آدرس ایمیل نامعتبر است";
   static const String weakPassword =

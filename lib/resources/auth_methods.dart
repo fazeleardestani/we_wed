@@ -6,7 +6,17 @@ import 'package:we_wed/utils/my_strings.dart';
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  //register method
+
+  Future<model.User> getUserDetails() async {
+    User currentUser = _auth.currentUser!;
+
+    DocumentSnapshot snapshot =
+        await _firestore.collection('users').doc(currentUser.uid).get();
+    model.User snap = model.User.fromSnap(snapshot);
+    return snap;
+  }
+
+  //sign up method
   Future<String> signUPUser({
     required String name,
     required String email,
@@ -14,19 +24,22 @@ class AuthMethods {
   }) async {
     String res = MyStrings.checkInformation;
     try {
-      if (email.isNotEmpty && password.isNotEmpty) {
+      if (email.isNotEmpty && password.isNotEmpty && name.isNotEmpty) {
         //register the user
         UserCredential credential = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
         //add user to database
         model.User user = model.User(
           uid: credential.user!.uid,
-          name: '',
+          name: name,
           email: email,
           password: password,
           weddingDate: '',
         );
-        _firestore.collection('users').doc(credential.user!.uid).set(user.toJson());
+        _firestore
+            .collection('users')
+            .doc(credential.user!.uid)
+            .set(user.toJson());
         res = "success";
       } else {
         res = MyStrings.enterAllTheFields;
@@ -68,5 +81,9 @@ class AuthMethods {
       res = error.toString();
     }
     return res;
+  }
+
+  Future signOut() async {
+    await FirebaseAuth.instance.signOut();
   }
 }

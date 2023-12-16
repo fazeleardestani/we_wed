@@ -12,7 +12,6 @@ class AppThemes {
             fontFamily: 'Iranyekan'),
         closeIconColor: Semantic.errorDark,
         showCloseIcon: true,
-        
         shape: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.all(Radius.circular(12)))),
@@ -33,13 +32,29 @@ class AppThemes {
         ),
       ),
       labelStyle: const TextStyle(
-        color: SolidColors.grey300,
         fontSize: 12,
         fontFamily: 'Iranyekan',
         fontWeight: FontWeight.w400,
       ),
       suffixIconColor: SolidColors.grey200,
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: Natural.defaultColor,
+        elevation: 0,
+        selectedItemColor: SolidColors.violetPrimery,
+        unselectedItemColor: SolidColors.grey200,
+        selectedLabelStyle: const TextStyle(
+          color: SolidColors.violetPrimery,
+          fontSize: 12,
+          fontFamily: 'Iranyekan',
+          fontWeight: FontWeight.w400,
+        ),
+        unselectedLabelStyle: const TextStyle(
+            fontSize: 12,
+            fontFamily: 'Iranyekan',
+            fontWeight: FontWeight.w400,
+            color: SolidColors.grey200),
+        type: BottomNavigationBarType.fixed),
     ////////////////////////////////////////////
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
@@ -134,20 +149,20 @@ class AppThemes {
         fontFamily: 'Iranyekan',
         fontWeight: FontWeight.w400,
       ),
-      labelLarge: TextStyle(
-        color: SolidColors.violetText,
-        fontSize: 16,
-        fontFamily: 'Iranyekan',
-        fontWeight: FontWeight.w500,
-      ),
       bodySmall: TextStyle(
         color: SolidColors.violet600,
         fontSize: 11,
         fontFamily: 'Iranyekan',
         fontWeight: FontWeight.w400,
       ),
-      labelSmall: TextStyle(
+      labelLarge: TextStyle(
         color: SolidColors.violetPrimery,
+        fontSize: 12,
+        fontFamily: 'Iranyekan',
+        fontWeight: FontWeight.w400,
+      ),
+      labelSmall: TextStyle(
+        color: SolidColors.violetText,
         fontSize: 12,
         fontFamily: 'Iranyekan',
         fontWeight: FontWeight.w400,

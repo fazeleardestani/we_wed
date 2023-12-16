@@ -11,7 +11,7 @@ import '../../controller/login_controller.dart';
 import '../../gen/assets.gen.dart';
 
 class LogInScreen extends StatelessWidget {
-  final logInController controller = Get.put(logInController());
+  final LoginController controller = Get.put(LoginController());
 
   LogInScreen({super.key});
 

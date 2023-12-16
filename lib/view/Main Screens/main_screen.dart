@@ -11,7 +11,7 @@ import '../../utils/my_colors.dart';
 
 // ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
-  RxInt selectedPageIndex = 1.obs;
+  RxInt selectedPageIndex = 0.obs;
   MainScreen({super.key});
 
   @override
@@ -19,48 +19,43 @@ class MainScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Natural.paper,
+      appBar: AppBar(
         backgroundColor: Natural.paper,
-        appBar: AppBar(
-          backgroundColor: Natural.paper,
-          elevation: 0,
-          title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            SvgPicture.asset(
-              Assets.images.wewed.path,
-              height: 28,
-            )
-          ]),
-        ),
-        body: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            Center(
-              child: Obx(
-                () => IndexedStack(
-                  index: selectedPageIndex.value,
-                  children: const [
-                    ProfileScreen(),
-                    HomeScreen(),
-                    ServiceScreen(),
-                    TasksScreen()
-                  ],
-                ),
-              ),
+        elevation: 0,
+        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          SvgPicture.asset(
+            Assets.images.wewed.path,
+            height: 28,
+          )
+        ]),
+      ),
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          Center(
+            child: IndexedStack(
+              index: selectedPageIndex.value,
+              children: [
+                ProfileScreen(),
+                const HomeScreen(),
+                const ServiceScreen(),
+                const TasksScreen(),
+              ],
             ),
-            Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-
-                child: BottomNavigation(
-                    changeScreen: (int value) {
-                      selectedPageIndex.value = value;
-                      return value;
-                    },
-                    height: height,
-                    width: width,
-                    selectedPageIndex: selectedPageIndex))
-          ],
-        ));
+          ),
+          BottomNavigation(
+            changeScreen: (int value) {
+              selectedPageIndex.value = value;
+              return value;
+            },
+            height: height,
+            width: width,
+            selectedPageIndex: selectedPageIndex,
+          )
+        ],
+      ),
+    );
   }
 }
 
@@ -87,11 +82,11 @@ class BottomNavigation extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
-              height: height/15.03,
-              width: width/6.94,
+              height: height / 15.03,
+              width: width / 6.94,
               child: InkWell(
                 autofocus: false,
-                onTap: () => changeScreen(0),
+                onTap: () => Obx(() => changeScreen(0)),
                 child: Column(
                   children: [
                     Obx(
@@ -118,7 +113,7 @@ class BottomNavigation extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () => changeScreen(1),
+              onTap: () => Obx(() => changeScreen(1)),
               child: Column(
                 children: [
                   Obx(
@@ -136,15 +131,13 @@ class BottomNavigation extends StatelessWidget {
                         MyStrings.home,
                         style: selectedPageIndex.value == 1
                             ? Theme.of(context).textTheme.labelSmall
-                            : Theme.of(context)
-                                .inputDecorationTheme
-                                .labelStyle,
+                            : Theme.of(context).inputDecorationTheme.labelStyle,
                       ))
                 ],
               ),
             ),
             InkWell(
-              onTap: () => changeScreen(2),
+              onTap: () => Obx(() => changeScreen(2)),
               child: Column(
                 children: [
                   Obx(
@@ -162,15 +155,13 @@ class BottomNavigation extends StatelessWidget {
                         MyStrings.services,
                         style: selectedPageIndex.value == 2
                             ? Theme.of(context).textTheme.labelSmall
-                            : Theme.of(context)
-                                .inputDecorationTheme
-                                .labelStyle,
+                            : Theme.of(context).inputDecorationTheme.labelStyle,
                       ))
                 ],
               ),
             ),
             InkWell(
-              onTap: () => changeScreen(3),
+              onTap: () => Obx(() => changeScreen(3)),
               child: Column(
                 children: [
                   Obx(
@@ -188,9 +179,7 @@ class BottomNavigation extends StatelessWidget {
                         MyStrings.tasks,
                         style: selectedPageIndex.value == 3
                             ? Theme.of(context).textTheme.labelSmall
-                            : Theme.of(context)
-                                .inputDecorationTheme
-                                .labelStyle,
+                            : Theme.of(context).inputDecorationTheme.labelStyle,
                       ))
                 ],
               ),

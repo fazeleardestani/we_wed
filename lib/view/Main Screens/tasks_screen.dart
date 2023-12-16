@@ -4,8 +4,9 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(child: Center(child: Text("tasks screen"))),
+    return const SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
+      child: SafeArea(child: Center(child: Text("tasks screen"))),
     );
   }
 }

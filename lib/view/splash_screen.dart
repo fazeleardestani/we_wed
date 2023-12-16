@@ -17,13 +17,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      // FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      //   if (user == null) {
-      //     Get.offAndToNamed(NamedRoute.signUp);
-      //   } else {
-      //     Get.offAndToNamed(NamedRoute.mainScreen);
-      //   }
-      // });
+      FirebaseAuth.instance.authStateChanges().listen((User? user) {
+        if (user == null) {
+          Get.offAndToNamed(NamedRoute.signUp);
+        } else {
+          Get.offAndToNamed(NamedRoute.mainScreen);
+        }
+      });
       // StreamBuilder(
       //   stream: FirebaseAuth.instance.authStateChanges(),
       //   builder: (context, snapshot) {
@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
       //     return SignUpScreen();
       //   },
       // );
-      Get.offAndToNamed(NamedRoute.signUp);
+      // Get.offAndToNamed(NamedRoute.signUp);
     });
     super.initState();
   }

@@ -95,7 +95,8 @@ class TimeLineScreen extends StatelessWidget {
                         const SizedBox(width: 8),
                         SvgPicture.asset(
                           Assets.icons.arrowLeft.path,
-                          color: SolidColors.violetPrimery,
+                          colorFilter: const ColorFilter.mode(
+                              SolidColors.violetPrimery, BlendMode.srcIn),
                         ),
                       ],
                     ),

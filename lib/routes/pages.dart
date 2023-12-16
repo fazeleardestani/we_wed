@@ -35,7 +35,7 @@ class Pages {
     ),
     GetPage(
       name: NamedRoute.mainScreen,
-      page: () => MainScreen(),
+      page: () =>  MainScreen(),
     ),
     GetPage(
       name: NamedRoute.homeScreen,
