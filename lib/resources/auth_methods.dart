@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:we_wed/models/user_model.dart' as model;
 import 'package:we_wed/utils/my_strings.dart';
-
+import 'dart:developer';
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -22,6 +22,7 @@ class AuthMethods {
     required String email,
     required String password,
   }) async {
+    
     String res = MyStrings.checkInformation;
     try {
       if (email.isNotEmpty && password.isNotEmpty && name.isNotEmpty) {
@@ -85,5 +86,17 @@ class AuthMethods {
 
   Future signOut() async {
     await FirebaseAuth.instance.signOut();
+  }
+
+  Future updateUser({
+    String? name,
+    String? newData,
+  }) async {
+    User currentUser = _auth.currentUser!;
+   await _firestore.collection('users').
+        doc(currentUser.uid)
+        .update({'$name': newData})
+        .then((value) => log("User Updated"))
+        .catchError((error) => log("Failed to update user: $error"));
   }
 }

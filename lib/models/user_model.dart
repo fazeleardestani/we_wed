@@ -20,15 +20,16 @@ class User {
         'name': name,
         'email': email,
         'password': password,
-        'widding_date': '',
       };
 
   static User fromSnap(DocumentSnapshot snap) {
-    var snapshot = snap.data() as Map<String, dynamic>;
-    return User(
-        uid: snapshot['uid'],
-        name: snapshot['name'],
-        email: snapshot['email'],
-        password: snapshot['password']);
-  }
+  var snapshot = snap.data() as Map<String, dynamic>;
+  return User(
+      uid: snapshot['uid'],
+      name: snapshot['name'],
+      email: snapshot['email'],
+      password: snapshot['password'],
+      weddingDate: snapshot['widding_date']);
+}
+
 }

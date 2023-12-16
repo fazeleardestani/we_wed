@@ -72,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                     const Spacer(),
                     TextButton(
                         onPressed: () async {
-                          AuthMethods().signOut();
+                          await AuthMethods().signOut();
                         },
                         child: const Text(
                           MyStrings.logout,
@@ -92,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
             ),
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return CircularProgressIndicator();
         }
       },
     );

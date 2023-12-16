@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
+import 'package:we_wed/resources/auth_methods.dart';
 import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
 import '../../controller/date_picker_controller.dart';
@@ -103,8 +104,10 @@ class DatePickerScreen extends StatelessWidget {
                   height: 48,
                   width: width / 2.4,
                   child: ElevatedButton(
-                    onPressed: () {
-                      // await user?.updateDisplayName("Jane Q. User");
+                    onPressed: () async{
+                      await AuthMethods().updateUser(
+                          name: 'widding_date',
+                          newData: picker.selectedDate.value);
                       Get.offAndToNamed(NamedRoute.timeLine);
                     },
                     style: Theme.of(context).elevatedButtonTheme.style,
