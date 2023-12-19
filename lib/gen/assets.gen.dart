@@ -45,6 +45,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home.svg
   SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
 
+  /// File path: assets/icons/information-circle.svg
+  SvgGenImage get informationCircle =>
+      const SvgGenImage('assets/icons/information-circle.svg');
+
   /// File path: assets/icons/lebas-category.svg
   SvgGenImage get lebasCategory =>
       const SvgGenImage('assets/icons/lebas-category.svg');
@@ -81,6 +85,7 @@ class $AssetsIconsGen {
         golCategory,
         google,
         home,
+        informationCircle,
         lebasCategory,
         mashinCategory,
         photographyCategory,
@@ -93,6 +98,9 @@ class $AssetsIconsGen {
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/blob.svg
+  SvgGenImage get blob => const SvgGenImage('assets/images/blob.svg');
 
   /// File path: assets/images/calendar.svg
   SvgGenImage get calendar => const SvgGenImage('assets/images/calendar.svg');
@@ -125,6 +133,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
+        blob,
         calendar,
         gradiantMain,
         timeline,

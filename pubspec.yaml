@@ -19,6 +19,7 @@ dependencies:
   linear_progress_bar: ^1.1.0
   persian_datetime_picker: ^2.6.0
   provider: ^6.1.1
+  dio: ^4.0.0
 
 dev_dependencies:
   flutter_test:

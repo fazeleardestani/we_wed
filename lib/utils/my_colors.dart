@@ -76,6 +76,7 @@ class Shades {
 }
 
 class Natural {
-  static const Color paper = Color(0xFFFCFDFF);
+  static const Color paper = Color(0xFFFCFCFC);
+  static const Color white = Colors.white;
   static Color defaultColor = Colors.white.withOpacity(0.44999998807907104);
 }

@@ -27,7 +27,8 @@ class MyStrings {
   static const String profile = "پروفایل";
   static const String home = "خانه";
   static const String services = "خدمات";
-  static const String tasks = "لیست کارها";
+  static const String servicesList = "لیست خدمات";
+  static const String tasksList = "لیست کارها";
   static const String editInformation = "ویرایش اطلاعات";
   static const String saveChanges = "ذخیره تغییرات";
   static const String logout = "خروج از حساب کاربری";
