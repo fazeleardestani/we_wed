@@ -9,7 +9,7 @@ class ServiceController extends GetxController {
   void fetchServices() async {
     try {
       log(services.toString());
-      List<dynamic> result = await ApiService.fetchServices();
+      List<ServiceModel> result = await ApiService.fetchServices();
       services.assignAll(result);
     } catch (error) {
       log("Error fetching services: $error");

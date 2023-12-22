@@ -16,6 +16,7 @@ class MyStrings {
   static const String previous = "قبلی";
   static const String goToHomePage = "برو به صفحه اصلی";
   static const String weWed = "We Wed";
+  static const String createCard = "ایجاد کارت دیجیتال";
   static const String doYouWantToPlanForTheBestDay =
       "حالا میخوای برای بهترین روز زندگیت برنامه ریزی کنی؟";
   static const String talarCategory = "تالار";
@@ -29,6 +30,7 @@ class MyStrings {
   static const String services = "خدمات";
   static const String servicesList = "لیست خدمات";
   static const String tasksList = "لیست کارها";
+  static const String inviteCard = "کارت دعوت";
   static const String editInformation = "ویرایش اطلاعات";
   static const String saveChanges = "ذخیره تغییرات";
   static const String logout = "خروج از حساب کاربری";
@@ -40,4 +42,11 @@ class MyStrings {
   static const String checkInformation = "اطلاعات وارد شده را بررسی کنید.";
   static const String enterAllTheFields = "لطفا تمام بخش ها را پر کنید.";
   static const String checkPassword = "رمزعبور و تکرار آن تطابق ندارد.";
+  static const String error =
+      "هنگام انجام عملیات مشکلی پیش آمده، لطفا دوباره امتحان کنید.";
+  static const String comingSoon =
+      "به زودی دسته بندی و اطلاعات بیشتری قرار می گیرد.";
+  static const String hi = "سلام";
+  static const String welcomeText = " از برنامه هات جا نمونی:)";
+  static const String addNewTask = 'فعالیت جدید';
 }

@@ -14,9 +14,9 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  /// File path: assets/icons/arayeshgah-category.svg
-  SvgGenImage get arayeshgahCategory =>
-      const SvgGenImage('assets/icons/arayeshgah-category.svg');
+  /// File path: assets/icons/arayeshgah-category.png
+  AssetGenImage get arayeshgahCategory =>
+      const AssetGenImage('assets/icons/arayeshgah-category.png');
 
   /// File path: assets/icons/arrow-left.svg
   SvgGenImage get arrowLeft => const SvgGenImage('assets/icons/arrow-left.svg');
@@ -28,16 +28,12 @@ class $AssetsIconsGen {
   SvgGenImage get bloomRight =>
       const SvgGenImage('assets/icons/bloom-right.svg');
 
-  /// File path: assets/icons/cake-category.svg
-  SvgGenImage get cakeCategory =>
-      const SvgGenImage('assets/icons/cake-category.svg');
+  /// File path: assets/icons/cake-category.png
+  AssetGenImage get cakeCategory =>
+      const AssetGenImage('assets/icons/cake-category.png');
 
   /// File path: assets/icons/calendar.svg
   SvgGenImage get calendar => const SvgGenImage('assets/icons/calendar.svg');
-
-  /// File path: assets/icons/gol-category.svg
-  SvgGenImage get golCategory =>
-      const SvgGenImage('assets/icons/gol-category.svg');
 
   /// File path: assets/icons/google.svg
   SvgGenImage get google => const SvgGenImage('assets/icons/google.svg');
@@ -49,17 +45,17 @@ class $AssetsIconsGen {
   SvgGenImage get informationCircle =>
       const SvgGenImage('assets/icons/information-circle.svg');
 
-  /// File path: assets/icons/lebas-category.svg
-  SvgGenImage get lebasCategory =>
-      const SvgGenImage('assets/icons/lebas-category.svg');
+  /// File path: assets/icons/lebas-category.png
+  AssetGenImage get lebasCategory =>
+      const AssetGenImage('assets/icons/lebas-category.png');
 
-  /// File path: assets/icons/mashin-category.svg
-  SvgGenImage get mashinCategory =>
-      const SvgGenImage('assets/icons/mashin-category.svg');
+  /// File path: assets/icons/mashin-category.png
+  AssetGenImage get mashinCategory =>
+      const AssetGenImage('assets/icons/mashin-category.png');
 
-  /// File path: assets/icons/photography-category.svg
-  SvgGenImage get photographyCategory =>
-      const SvgGenImage('assets/icons/photography-category.svg');
+  /// File path: assets/icons/photography-category.png
+  AssetGenImage get photographyCategory =>
+      const AssetGenImage('assets/icons/photography-category.png');
 
   /// File path: assets/icons/profile.svg
   SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
@@ -67,22 +63,21 @@ class $AssetsIconsGen {
   /// File path: assets/icons/services.svg
   SvgGenImage get services => const SvgGenImage('assets/icons/services.svg');
 
-  /// File path: assets/icons/talar-category.svg
-  SvgGenImage get talarCategory =>
-      const SvgGenImage('assets/icons/talar-category.svg');
+  /// File path: assets/icons/talar-category.png
+  AssetGenImage get talarCategory =>
+      const AssetGenImage('assets/icons/talar-category.png');
 
   /// File path: assets/icons/tasks.svg
   SvgGenImage get tasks => const SvgGenImage('assets/icons/tasks.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [
+  List<dynamic> get values => [
         arayeshgahCategory,
         arrowLeft,
         bloomLeft,
         bloomRight,
         cakeCategory,
         calendar,
-        golCategory,
         google,
         home,
         informationCircle,
@@ -105,9 +100,21 @@ class $AssetsImagesGen {
   /// File path: assets/images/calendar.svg
   SvgGenImage get calendar => const SvgGenImage('assets/images/calendar.svg');
 
+  /// File path: assets/images/double-ring.png
+  AssetGenImage get doubleRing =>
+      const AssetGenImage('assets/images/double-ring.png');
+
   /// File path: assets/images/gradiant-main.svg
   SvgGenImage get gradiantMain =>
       const SvgGenImage('assets/images/gradiant-main.svg');
+
+  /// File path: assets/images/invite-card.png
+  AssetGenImage get inviteCard =>
+      const AssetGenImage('assets/images/invite-card.png');
+
+  /// File path: assets/images/single-ring.png
+  AssetGenImage get singleRing =>
+      const AssetGenImage('assets/images/single-ring.png');
 
   /// File path: assets/images/timeline.svg
   SvgGenImage get timeline => const SvgGenImage('assets/images/timeline.svg');
@@ -132,10 +139,13 @@ class $AssetsImagesGen {
       const SvgGenImage('assets/images/wewed_logo.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [
+  List<dynamic> get values => [
         blob,
         calendar,
+        doubleRing,
         gradiantMain,
+        inviteCard,
+        singleRing,
         timeline,
         userProfile,
         weddingCard,

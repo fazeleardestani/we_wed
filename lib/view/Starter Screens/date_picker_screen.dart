@@ -106,8 +106,9 @@ class DatePickerScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () async{
                       await AuthMethods().updateUser(
-                          name: 'widding_date',
+                          name: 'weddingDate',
                           newData: picker.selectedDate.value);
+                          
                       Get.offAndToNamed(NamedRoute.timeLine);
                     },
                     style: Theme.of(context).elevatedButtonTheme.style,

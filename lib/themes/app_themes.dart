@@ -151,7 +151,7 @@ class AppThemes {
       ),
       bodySmall: TextStyle(
         color: SolidColors.violet600,
-        fontSize: 11,
+        fontSize: 10,
         fontFamily: 'Iranyekan',
         fontWeight: FontWeight.w400,
       ),

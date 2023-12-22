@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:we_wed/resources/auth_methods.dart';
 import 'package:we_wed/widgets/text_field.dart';
 import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
 import 'package:we_wed/models/user_model.dart' as model;
+
+import '../../gen/assets.gen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -11,6 +14,24 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Natural.white,
+          foregroundColor: Natural.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(Assets.icons.bloomRight.path),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  MyStrings.profile,
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+              ),
+              SvgPicture.asset(Assets.icons.bloomLeft.path),
+            ],
+          )),
       backgroundColor: Natural.paper,
       body: FutureBuilder<model.User>(
         future: AuthMethods().getUserDetails(),
@@ -41,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
                         context,
                         height,
                         TextInputType.name,
-                        info.name,
+                        info.name!,
                         MyStrings.name,
                       ),
                       SizedBox(
@@ -51,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                         context,
                         height,
                         TextInputType.emailAddress,
-                        info.email,
+                        info.email!,
                         MyStrings.emailAddress,
                       ),
                       SizedBox(

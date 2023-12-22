@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:we_wed/controller/main_controller.dart';
 import 'package:we_wed/utils/my_strings.dart';
 import 'package:we_wed/view/Main Screens/home_screen.dart';
 import 'package:we_wed/view/Main Screens/profile_screen.dart';
@@ -10,7 +11,7 @@ import '../../gen/assets.gen.dart';
 import '../../utils/my_colors.dart';
 
 class MainScreen extends StatelessWidget {
-  final RxInt selectedPageIndex = RxInt(1);
+  final MainController controller = Get.put(MainController());
 
   MainScreen({super.key});
 
@@ -27,12 +28,12 @@ class MainScreen extends StatelessWidget {
           Center(
             child: Obx(
               () => IndexedStack(
-                index: selectedPageIndex.value,
+                index: controller.selectedPageIndex.value,
                 children: [
-                  ProfileScreen(),
+                  const ProfileScreen(),
                   HomeScreen(),
-                  ServiceScreen(),
-                  TasksScreen(),
+                  const ServiceScreen(),
+                  const TasksScreen(),
                 ],
               ),
             ),
@@ -41,9 +42,9 @@ class MainScreen extends StatelessWidget {
             height: height,
             width: width,
             changeScreen: (value) {
-              selectedPageIndex.value = value;
+              controller.selectedPageIndex.value = value;
             },
-            selectedPageIndex: selectedPageIndex,
+            selectedPageIndex: controller.selectedPageIndex,
             key: const Key('bottom_navigation'),
           ),
         ],
@@ -68,27 +69,63 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: height / 12.32,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          SizedBox(
-            height: height / 15.03,
-            width: width / 6.94,
-            child: GestureDetector(
+      decoration: const BoxDecoration(color: Natural.white),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 12.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              height: height / 15.03,
+              width: width / 6.94,
+              child: GestureDetector(
+                child: InkWell(
+                  autofocus: false,
+                  onTap: () => changeScreen(0),
+                  child: Column(
+                    children: [
+                      Obx(
+                        () => SvgPicture.asset(
+                          Assets.icons.profile.path,
+                          height: 24,
+                          width: 24,
+                          colorFilter: ColorFilter.mode(
+                            selectedPageIndex.value == 0
+                                ? SolidColors.violetPrimery
+                                : SolidColors.grey200,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      ),
+                      Obx(
+                        () => Text(
+                          MyStrings.profile,
+                          style: selectedPageIndex.value == 0
+                              ? Theme.of(context).textTheme.labelSmall
+                              : Theme.of(context)
+                                  .inputDecorationTheme
+                                  .labelStyle,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            GestureDetector(
               child: InkWell(
-                autofocus: false,
-                onTap: () => changeScreen(0),
+                onTap: () => changeScreen(1),
                 child: Column(
                   children: [
                     Obx(
                       () => SvgPicture.asset(
-                        Assets.icons.profile.path,
+                        Assets.icons.home.path,
                         height: 24,
                         width: 24,
                         colorFilter: ColorFilter.mode(
-                          selectedPageIndex.value == 0
+                          selectedPageIndex.value == 1
                               ? SolidColors.violetPrimery
                               : SolidColors.grey200,
                           BlendMode.srcIn,
@@ -97,8 +134,8 @@ class BottomNavigation extends StatelessWidget {
                     ),
                     Obx(
                       () => Text(
-                        MyStrings.profile,
-                        style: selectedPageIndex.value == 0
+                        MyStrings.home,
+                        style: selectedPageIndex.value == 1
                             ? Theme.of(context).textTheme.labelSmall
                             : Theme.of(context).inputDecorationTheme.labelStyle,
                       ),
@@ -107,98 +144,68 @@ class BottomNavigation extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          GestureDetector(
-            child: InkWell(
-              onTap: () => changeScreen(1),
-              child: Column(
-                children: [
-                  Obx(
-                    () => SvgPicture.asset(
-                      Assets.icons.home.path,
-                      height: 24,
-                      width: 24,
-                      colorFilter: ColorFilter.mode(
-                        selectedPageIndex.value == 1
-                            ? SolidColors.violetPrimery
-                            : SolidColors.grey200,
-                        BlendMode.srcIn,
+            GestureDetector(
+              child: InkWell(
+                onTap: () => changeScreen(2),
+                child: Column(
+                  children: [
+                    Obx(
+                      () => SvgPicture.asset(
+                        Assets.icons.services.path,
+                        height: 24,
+                        width: 24,
+                        colorFilter: ColorFilter.mode(
+                          selectedPageIndex.value == 2
+                              ? SolidColors.violetPrimery
+                              : SolidColors.grey200,
+                          BlendMode.srcIn,
+                        ),
                       ),
                     ),
-                  ),
-                  Obx(
-                    () => Text(
-                      MyStrings.home,
-                      style: selectedPageIndex.value == 1
-                          ? Theme.of(context).textTheme.labelSmall
-                          : Theme.of(context).inputDecorationTheme.labelStyle,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          GestureDetector(
-            child: InkWell(
-              onTap: () => changeScreen(2),
-              child: Column(
-                children: [
-                  Obx(
-                    () => SvgPicture.asset(
-                      Assets.icons.services.path,
-                      height: 24,
-                      width: 24,
-                      colorFilter: ColorFilter.mode(
-                        selectedPageIndex.value == 2
-                            ? SolidColors.violetPrimery
-                            : SolidColors.grey200,
-                        BlendMode.srcIn,
+                    Obx(
+                      () => Text(
+                        MyStrings.services,
+                        style: selectedPageIndex.value == 2
+                            ? Theme.of(context).textTheme.labelSmall
+                            : Theme.of(context).inputDecorationTheme.labelStyle,
                       ),
                     ),
-                  ),
-                  Obx(
-                    () => Text(
-                      MyStrings.services,
-                      style: selectedPageIndex.value == 2
-                          ? Theme.of(context).textTheme.labelSmall
-                          : Theme.of(context).inputDecorationTheme.labelStyle,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          GestureDetector(
-            child: InkWell(
-              onTap: () => changeScreen(3),
-              child: Column(
-                children: [
-                  Obx(
-                    () => SvgPicture.asset(
-                      Assets.icons.tasks.path,
-                      height: 24,
-                      width: 24,
-                      colorFilter: ColorFilter.mode(
-                        selectedPageIndex.value == 3
-                            ? SolidColors.violetPrimery
-                            : SolidColors.grey200,
-                        BlendMode.srcIn,
+            GestureDetector(
+              child: InkWell(
+                onTap: () => changeScreen(3),
+                child: Column(
+                  children: [
+                    Obx(
+                      () => SvgPicture.asset(
+                        Assets.icons.tasks.path,
+                        height: 24,
+                        width: 24,
+                        colorFilter: ColorFilter.mode(
+                          selectedPageIndex.value == 3
+                              ? SolidColors.violetPrimery
+                              : SolidColors.grey200,
+                          BlendMode.srcIn,
+                        ),
                       ),
                     ),
-                  ),
-                  Obx(
-                    () => Text(
-                      MyStrings.tasksList,
-                      style: selectedPageIndex.value == 3
-                          ? Theme.of(context).textTheme.labelSmall
-                          : Theme.of(context).inputDecorationTheme.labelStyle,
+                    Obx(
+                      () => Text(
+                        MyStrings.tasksList,
+                        style: selectedPageIndex.value == 3
+                            ? Theme.of(context).textTheme.labelSmall
+                            : Theme.of(context).inputDecorationTheme.labelStyle,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

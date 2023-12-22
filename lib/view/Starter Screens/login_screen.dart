@@ -33,125 +33,142 @@ class LogInScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
+      body: Center(
+        child: SafeArea(
+            child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image.asset(Assets.images.wewedLogo.path),
-            Column(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomTextFieldWidget(
-                  hintText: MyStrings.emailAddress,
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  boxColor: Natural.defaultColor,
-                  borderColor: SolidColors.grey50,
-                  height: hight / 16.91,
-                  textEditingController: controller.emailController,
-                  textInputType: TextInputType.emailAddress,
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                CustomTextFieldWidget(
-                  textEditingController: controller.passwordController,
-                  isPass: true,
-                  textInputType: TextInputType.text,
-                  hintText: MyStrings.password,
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  boxColor: Natural.defaultColor,
-                  borderColor: SolidColors.grey50,
-                  height: hight / 16.91,
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                Container(
-                  height: 48,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                  width: double.maxFinite,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      loginUser();
-                    },
-                    child: Text(
-                      MyStrings.login,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                Row(
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Image.asset(Assets.images.wewedLogo.path),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      MyStrings.dontHaveAnAccount,
-                      style: Theme.of(context).textTheme.displayLarge,
+                    CustomTextFieldWidget(
+                      hintText: MyStrings.emailAddress,
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      boxColor: Natural.defaultColor,
+                      borderColor: SolidColors.grey50,
+                      height: hight / 16.91,
+                      textEditingController: controller.emailController,
+                      textInputType: TextInputType.emailAddress,
                     ),
-                    TextButton(
-                        onPressed: () {
-                          Get.offAndToNamed(NamedRoute.signUp);
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    CustomTextFieldWidget(
+                      textEditingController: controller.passwordController,
+                      isPass: true,
+                      textInputType: TextInputType.text,
+                      hintText: MyStrings.password,
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      boxColor: Natural.defaultColor,
+                      borderColor: SolidColors.grey50,
+                      height: hight / 16.91,
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12)),
+                      width: double.maxFinite,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          loginUser();
                         },
-                        child: const Text(
-                          MyStrings.register,
-                          style: TextStyle(
-                            color: SolidColors.violetPrimery,
-                            fontSize: 14,
-                            fontFamily: 'Iranyekan',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ))
-                  ],
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const Divider(
-                  color: SolidColors.grey100,
-                  thickness: 1,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Container(
-                  height: 48,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.resolveWith((states) {
-                          return SolidColors.grey50;
-                        }),
+                        child: Text(
+                          MyStrings.login,
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(Assets.icons.google.path),
-                          const SizedBox(
-                            width: 8,
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    Row(
+                      // crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          MyStrings.dontHaveAnAccount,
+                          style: Theme.of(context).textTheme.displayLarge,
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              Get.offAndToNamed(NamedRoute.signUp);
+                            },
+                            child: const Text(
+                              MyStrings.register,
+                              style: TextStyle(
+                                color: SolidColors.violetPrimery,
+                                fontSize: 14,
+                                fontFamily: 'Iranyekan',
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ))
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    const Divider(
+                      color: SolidColors.grey100,
+                      thickness: 1,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ElevatedButton(
+                          onPressed: () async {
+                            String result =
+                                await AuthMethods().signInWithGoogle();
+                            if (result == 'new') {
+                              Get.offAndToNamed(NamedRoute.pickDate);
+                            } else if (result == 'old') {
+                              Get.offAndToNamed(NamedRoute.mainScreen);
+                            } else {
+                              // ignore: use_build_context_synchronously
+                              showSnackBar(context, MyStrings.error);
+                            }
+                          },
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.resolveWith((states) {
+                              return SolidColors.grey50;
+                            }),
                           ),
-                          Text(
-                            MyStrings.loginrWithGoogle,
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          )
-                        ],
-                      )),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(Assets.icons.google.path),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                MyStrings.loginrWithGoogle,
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
+                              )
+                            ],
+                          )),
+                    )
+                  ],
                 )
               ],
-            )
-          ],
-        ),
-      )),
+            ),
+          ),
+        )),
+      ),
     );
   }
 }

@@ -59,7 +59,7 @@ class TimeLineScreen extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 48,
-                  width: width / 2.4,
+                  width: width / 2,
                   child: ElevatedButton(
                     onPressed: () {
                       Get.offAndToNamed(NamedRoute.mainScreen);
@@ -71,7 +71,7 @@ class TimeLineScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 48,
-                  width: width / 2.4,
+                  width: width / 3,
                   child: ElevatedButton(
                     onPressed: () {
                       Get.offAndToNamed(NamedRoute.pickDate);

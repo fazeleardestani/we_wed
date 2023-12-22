@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:we_wed/routes/names.dart';
 import 'package:we_wed/view/Main%20Screens/home_screen.dart';
 import 'package:we_wed/view/Main%20Screens/main_screen.dart';
+import 'package:we_wed/view/Main%20Screens/service_screen.dart';
+import 'package:we_wed/view/Main%20Screens/tasks_screen.dart';
 import 'package:we_wed/view/Starter Screens/date_picker_screen.dart';
 import 'package:we_wed/view/Starter%20Screens/login_screen.dart';
 import 'package:we_wed/view/splash_screen.dart';
@@ -35,11 +37,19 @@ class Pages {
     ),
     GetPage(
       name: NamedRoute.mainScreen,
-      page: () =>  MainScreen(),
+      page: () => MainScreen(),
     ),
     GetPage(
       name: NamedRoute.homeScreen,
-      page: () => const HomeScreen(),
+      page: () => HomeScreen(),
+    ),
+     GetPage(
+      name: NamedRoute.servicesScreen,
+      page: () => const ServiceScreen(),
+    ),
+     GetPage(
+      name: NamedRoute.tasksScreen,
+      page: () => const TasksScreen(),
     ),
   ];
 }

@@ -1,13 +1,10 @@
-// import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:we_wed/controller/service_controller.dart';
 import 'package:we_wed/gen/assets.gen.dart';
-import 'package:we_wed/models/services_model.dart';
 import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
-import 'package:we_wed/widgets/custom_mask.dart.dart';
 
 class ServiceScreen extends StatelessWidget {
   const ServiceScreen({super.key});
@@ -16,19 +13,31 @@ class ServiceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final ServiceController serviceController = Get.put(ServiceController());
     final height = MediaQuery.of(context).size.height;
-    // final width = MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
     serviceController.fetchServices();
     return Scaffold(
       backgroundColor: Natural.paper,
       appBar: AppBar(
-        backgroundColor: Natural.white,
-        centerTitle: true,
-        title: Text(MyStrings.servicesList,
-            style: Theme.of(context).textTheme.displayLarge),
-      ),
+          centerTitle: true,
+          backgroundColor: Natural.white,
+          foregroundColor: Natural.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(Assets.icons.bloomRight.path),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  MyStrings.servicesList,
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+              ),
+              SvgPicture.asset(Assets.icons.bloomLeft.path),
+            ],
+          )),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           child: Obx(() {
             if (serviceController.services.isEmpty) {
               return const Center(
@@ -37,22 +46,44 @@ class ServiceScreen extends StatelessWidget {
             } else {
               return Column(
                 children: [
-                  Container(
-                    width: double.infinity,
-                    height: height / 11.77,
-                    color: Natural.white,
+                  Padding(
+                    padding: EdgeInsets.only(
+                        bottom: width / 31.25, top: width / 120),
+                    child: Container(
+                      width: double.infinity,
+                      height: height / 11.77,
+                      decoration: BoxDecoration(
+                        color: Natural.white,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: SolidColors.grey50,
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          MyStrings.comingSoon,
+                          style:
+                              Theme.of(context).snackBarTheme.contentTextStyle,
+                        ),
+                      ),
+                    ),
                   ),
                   Expanded(
                     child: ListView.builder(
                       itemCount: serviceController.services.length,
                       itemBuilder: (context, index) {
-                        dynamic service = serviceController.services[index];
+                        final service = serviceController.services[index];
                         return Column(
                           children: [
                             Container(
-                              height: height / 6.496,
+                              height: height / 6,
                               decoration: BoxDecoration(
-                                color: Natural.paper,
+                                color: Natural.white,
                                 borderRadius: BorderRadius.circular(12),
                                 boxShadow: const [
                                   BoxShadow(
@@ -63,38 +94,98 @@ class ServiceScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              // child: Text(service.name),
-                              child: Row(
-                                children: [
-                                  Stack(
-                                    children: [
-                                      MaskedImage(
-                                        imageUrl: service.image,
-                                        imageLocalPath: Assets.images.blob.path,
+                              child: Padding(
+                                padding: EdgeInsets.all(width / 31.25),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: height / 8.12,
+                                      width: width / 3.75,
+                                      child: CircleAvatar(
+                                        backgroundImage:
+                                            NetworkImage(service.image),
                                       ),
-                                      // SvgPicture.asset(
-                                      //   Assets.images.blob.path,
-                                      // ),
-                                      // Image.network(
-                                      //   service.image,
-                                      //   colorBlendMode: BlendMode.srcIn,
-                                      // )
-                                    ],
-                                  )
-                                ],
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Text(
+                                            service.name,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall,
+                                          ),
+                                          Row(
+                                            children: [
+                                              const Icon(
+                                                size: 20,
+                                                Icons.location_on_outlined,
+                                                color: SolidColors.grey100,
+                                              ),
+                                              const SizedBox(width: 8),
+                                              Text(
+                                                service.city,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.info_outline_rounded,
+                                                color: SolidColors.grey100,
+                                                size: 20,
+                                              ),
+                                              const SizedBox(width: 8),
+                                              Expanded(
+                                                child: Text(
+                                                  service.address,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyMedium,
+                                                  softWrap: true,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              const Icon(
+                                                size: 20,
+                                                Icons.phone_enabled_rounded,
+                                                color: SolidColors.grey100,
+                                              ),
+                                              const SizedBox(width: 8),
+                                              Text(
+                                                service.phoneNumber,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
+                                                softWrap: true,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                            const SizedBox(
-                              height: 16,
-                            )
+                            const SizedBox(height: 16),
                           ],
                         );
                       },
                     ),
                   ),
-                  SizedBox(
-                    height: height / 10.5,
-                  ),
+                  SizedBox(height: height / 10.5),
                 ],
               );
             }

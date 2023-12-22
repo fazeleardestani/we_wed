@@ -10,23 +10,23 @@ List<CategoryModel> categoryList = [
       title: MyStrings.talarCategory),
   CategoryModel(
       id: 2,
-      imagePath: Assets.icons.talarCategory.path,
+      imagePath: Assets.icons.arayeshgahCategory.path,
       title: MyStrings.arayeshgahCategory),
   CategoryModel(
       id: 3,
-      imagePath: Assets.icons.talarCategory.path,
+      imagePath: Assets.icons.photographyCategory.path,
       title: MyStrings.photographyCategory),
   CategoryModel(
       id: 4,
-      imagePath: Assets.icons.talarCategory.path,
+      imagePath: Assets.icons.mashinCategory.path,
       title: MyStrings.carCategory),
   CategoryModel(
       id: 5,
-      imagePath: Assets.icons.talarCategory.path,
+      imagePath: Assets.icons.cakeCategory.path,
       title: MyStrings.cakeCategory),
   CategoryModel(
       id: 6,
-      imagePath: Assets.icons.talarCategory.path,
+      imagePath: Assets.icons.lebasCategory.path,
       title: MyStrings.lebasCategory),
 ];
 
@@ -38,5 +38,3 @@ List<UserModel> userList = [
       password: "gkdifjgdfhih",
       weddingTime: "1403/03/03"),
 ];
-
-

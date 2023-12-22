@@ -8,4 +8,6 @@ class NamedRoute {
   static String timeLine = "/timeLine";
   static String mainScreen = "/mainScreen";
   static String homeScreen = "/homeScreen";
+  static String servicesScreen = "/servicesScreen";
+  static String tasksScreen = "/tasksScreen";
 }

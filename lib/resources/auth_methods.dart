@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:we_wed/models/user_model.dart' as model;
 import 'package:we_wed/utils/my_strings.dart';
 import 'dart:developer';
+
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -22,7 +24,6 @@ class AuthMethods {
     required String email,
     required String password,
   }) async {
-    
     String res = MyStrings.checkInformation;
     try {
       if (email.isNotEmpty && password.isNotEmpty && name.isNotEmpty) {
@@ -88,15 +89,73 @@ class AuthMethods {
     await FirebaseAuth.instance.signOut();
   }
 
+  Future signInWithGoogle() async {
+    String res = "";
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      if (googleUser == null) {
+        res = MyStrings.error;
+        return null;
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // ورود به حساب با استفاده از اطلاعات احراز هویت
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      if (userCredential.additionalUserInfo?.isNewUser ?? false) {
+        res = 'new';
+        
+        final CollectionReference users =
+          FirebaseFirestore.instance.collection('users');
+      users.doc(userCredential.user!.uid).set({
+        'uid': userCredential.user!.uid,
+        'displayName': userCredential.user!.displayName,
+        'email': userCredential.user!.email,
+      });
+      } else {
+        res = 'old';
+      }
+    } catch (e) {
+      log('Error: $e');
+      // نمایش پیام یا انجام عملیات دلخواه برای مدیریت خطاها
+    }
+    return res;
+  }
+
+  Future<void> addUserToFirestore(User user) async {
+    try {
+      final CollectionReference users =
+          FirebaseFirestore.instance.collection('users');
+
+      users.doc(user.uid).set({
+        'uid': user.uid,
+        'displayName': user.displayName,
+        'email': user.email,
+      });
+    } catch (e) {
+      log('Error: $e');
+    }
+  }
+
   Future updateUser({
     String? name,
     String? newData,
   }) async {
     User currentUser = _auth.currentUser!;
-   await _firestore.collection('users').
-        doc(currentUser.uid)
+    await _firestore
+        .collection('users')
+        .doc(currentUser.uid)
         .update({'$name': newData})
         .then((value) => log("User Updated"))
         .catchError((error) => log("Failed to update user: $error"));
+    return "success";
   }
 }
