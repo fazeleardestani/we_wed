@@ -34,6 +34,8 @@ class MyStrings {
   static const String editInformation = "ویرایش اطلاعات";
   static const String saveChanges = "ذخیره تغییرات";
   static const String logout = "خروج از حساب کاربری";
+  static const String errorStatus = "مشکلی پیش آمده!";
+  static const String successStatus = 'عملیات با موفیت انجام شد';
   static const String invalidEmail = "آدرس ایمیل نامعتبر است";
   static const String weakPassword =
       "رمز عبور ضعیف است. (حداقل باید 6 کاراکتر داشته باشد)";
@@ -42,11 +44,22 @@ class MyStrings {
   static const String checkInformation = "اطلاعات وارد شده را بررسی کنید.";
   static const String enterAllTheFields = "لطفا تمام بخش ها را پر کنید.";
   static const String checkPassword = "رمزعبور و تکرار آن تطابق ندارد.";
-  static const String error =
-      "هنگام انجام عملیات مشکلی پیش آمده، لطفا دوباره امتحان کنید.";
+  static const String pleaseTryAgain = "لطفا دوباره امتحان کنید.";
   static const String comingSoon =
       "به زودی دسته بندی و اطلاعات بیشتری قرار می گیرد.";
   static const String hi = "سلام";
   static const String welcomeText = " از برنامه هات جا نمونی:)";
   static const String addNewTask = 'فعالیت جدید';
+  static const String taskTitle = 'عنوان';
+  static const String taskDescription = 'توضیحات (اختیاری)';
+  static const String taskInfo = 'مشخصات فعالیت';
+  static const String category = 'دسته بندی';
+  static const String categoryTashrifat = 'تشریفات';
+  static const String categoryMehmanha = 'مهمان ها';
+  static const String categoryArus = 'ملزومات عروس';
+  static const String categoryDamad = 'ملزومات داماد';
+  static const String categoryQeyre = 'سایر';
+  static const String pickDay = 'تنظیم تاریخ';
+  static const String addTask = 'ثبت فعالیت';
+  static const String successCreatedTask = 'فعالیت به لیست کارهای شما اضافه شد';
 }

@@ -33,7 +33,7 @@ class MainScreen extends StatelessWidget {
                   const ProfileScreen(),
                   HomeScreen(),
                   const ServiceScreen(),
-                  const TasksScreen(),
+                  TasksScreen(),
                 ],
               ),
             ),
@@ -71,7 +71,9 @@ class BottomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height / 12.32,
-      decoration: const BoxDecoration(color: Natural.white),
+      decoration: const BoxDecoration(
+          color: Natural.white,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(12))),
       child: Padding(
         padding: const EdgeInsets.only(top: 12.0),
         child: Row(

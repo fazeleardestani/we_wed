@@ -95,7 +95,7 @@ class AuthMethods {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
       if (googleUser == null) {
-        res = MyStrings.error;
+        res = MyStrings.pleaseTryAgain;
         return null;
       }
 

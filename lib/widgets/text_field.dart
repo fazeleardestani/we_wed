@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:we_wed/utils/my_colors.dart';
 
-
 // ignore: must_be_immutable
 class CustomTextFieldWidget extends StatelessWidget {
   final TextEditingController? textEditingController;
   final bool isPass;
   final bool readOnly;
+  final bool autofocus;
   final TextInputType textInputType;
   String? hintText;
   Color? hintTextColor;
@@ -19,6 +19,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   double? heightScale;
   double? widthtScale;
   double? padding;
+  final int maxLines;
 
   CustomTextFieldWidget({
     super.key,
@@ -36,19 +37,21 @@ class CustomTextFieldWidget extends StatelessWidget {
     required this.textEditingController,
     this.isPass = false,
     this.readOnly = false,
+    this.autofocus = true,
     required this.textInputType,
+    this.maxLines = 1
   });
 
   @override
   Widget build(BuildContext context) {
-
     return SizedBox(
       width: width,
       child: TextFormField(
-        
         style: const TextStyle(fontFamily: 'IRANYekan'),
         obscureText: isPass,
         readOnly: readOnly,
+        autofocus: autofocus,
+        maxLines: maxLines,
         keyboardType: textInputType,
         controller: textEditingController,
         onChanged: (value) {

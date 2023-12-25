@@ -49,7 +49,7 @@ class Pages {
     ),
      GetPage(
       name: NamedRoute.tasksScreen,
-      page: () => const TasksScreen(),
+      page: () => TasksScreen(),
     ),
   ];
 }

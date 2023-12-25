@@ -170,8 +170,7 @@ class HomeScreen extends StatelessWidget {
                           if (categoryList[index].id == 1) {
                             controller.selectedPageIndex.value = 2;
                           } else {
-                            showSnackBar(
-                                context, 'این دسته بندی هنوز اضافه نشده!');
+                            showSnackBar(MyStrings.errorStatus, 'این دسته بندی هنوز اضافه نشده!' , Semantic.errorMain);
                           }
                         },
                         child: Column(
@@ -255,8 +254,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-Future<void> _launchUrl(_url) async {
-  if (!await launchUrl(_url)) {
-    log('Could not launch $_url');
+Future<void> _launchUrl(url) async {
+  if (!await launchUrl(url)) {
+    log('Could not launch $url');
   }
 }

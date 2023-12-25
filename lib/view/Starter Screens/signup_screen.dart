@@ -24,7 +24,7 @@ class SignUpScreen extends StatelessWidget {
           password: controller.passwordController.text);
       if (res != 'success') {
         // ignore: use_build_context_synchronously
-        showSnackBar(context, res);
+        showSnackBar(MyStrings.errorStatus, res , Semantic.errorMain);
       } else {
         Get.offAndToNamed(NamedRoute.pickDate);
       }
@@ -110,7 +110,7 @@ class SignUpScreen extends StatelessWidget {
                               controller.confirmPasswordController.text) {
                             signUPUser();
                           } else {
-                            showSnackBar(context, MyStrings.checkPassword);
+                            showSnackBar(MyStrings.errorStatus, MyStrings.checkPassword , Semantic.errorMain);
                           }
                         },
                         child: Text(
@@ -170,7 +170,7 @@ class SignUpScreen extends StatelessWidget {
                               Get.offAndToNamed(NamedRoute.mainScreen);
                             } else {
                               // ignore: use_build_context_synchronously
-                              showSnackBar(context, MyStrings.error);
+                              showSnackBar(MyStrings.errorStatus, MyStrings.pleaseTryAgain , Semantic.errorMain);
                             }
                           },
                           style: ButtonStyle(

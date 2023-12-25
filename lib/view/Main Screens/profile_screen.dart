@@ -144,6 +144,7 @@ class ProfileScreen extends StatelessWidget {
           height: 8,
         ),
         CustomTextFieldWidget(
+          autofocus: false,
           hintText: hintText,
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           boxColor: Natural.white,

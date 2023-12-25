@@ -17,7 +17,7 @@ class LogInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double hight = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
     // double width = MediaQuery.of(context).size.width;
 
     void loginUser() async {
@@ -26,7 +26,7 @@ class LogInScreen extends StatelessWidget {
           password: controller.passwordController.text);
       if (res != 'success') {
         // ignore: use_build_context_synchronously
-        showSnackBar(context, res);
+        showSnackBar(MyStrings.errorStatus, res , Semantic.errorMain);
       } else {
         Get.offAndToNamed(NamedRoute.mainScreen);
       }
@@ -53,7 +53,7 @@ class LogInScreen extends StatelessWidget {
                       borderRadius: const BorderRadius.all(Radius.circular(8)),
                       boxColor: Natural.defaultColor,
                       borderColor: SolidColors.grey50,
-                      height: hight / 16.91,
+                      height: height / 16.91,
                       textEditingController: controller.emailController,
                       textInputType: TextInputType.emailAddress,
                     ),
@@ -68,7 +68,7 @@ class LogInScreen extends StatelessWidget {
                       borderRadius: const BorderRadius.all(Radius.circular(8)),
                       boxColor: Natural.defaultColor,
                       borderColor: SolidColors.grey50,
-                      height: hight / 16.91,
+                      height: height / 16.91,
                     ),
                     const SizedBox(
                       height: 24,
@@ -138,7 +138,7 @@ class LogInScreen extends StatelessWidget {
                               Get.offAndToNamed(NamedRoute.mainScreen);
                             } else {
                               // ignore: use_build_context_synchronously
-                              showSnackBar(context, MyStrings.error);
+                              showSnackBar(MyStrings.errorStatus, MyStrings.pleaseTryAgain , Semantic.errorMain);
                             }
                           },
                           style: ButtonStyle(

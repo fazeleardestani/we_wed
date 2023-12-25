@@ -54,7 +54,7 @@ class DatePickerScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                picker.pickDate(context);
+                picker.pickDateWedding(context);
               },
               child: Container(
                 width: double.maxFinite,

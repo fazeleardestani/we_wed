@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:we_wed/controller/date_picker_controller.dart';
+import 'package:we_wed/controller/tasks_controller.dart';
 import 'package:we_wed/gen/assets.gen.dart';
 import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
+import '../../widgets/show_model_button_sheet.dart';
 
 class TasksScreen extends StatelessWidget {
-  const TasksScreen({super.key});
+  TasksScreen({super.key});
+  final TasksController controller = Get.put(TasksController());
+  final DatePickerController dateController = Get.put(DatePickerController());
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -32,7 +39,7 @@ class TasksScreen extends StatelessWidget {
           )),
       floatingActionButton: Padding(
         padding: EdgeInsets.only(bottom: height / 10),
-        child: floatingButton(context),
+        child: floatingButton(context, height, width),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       body: const SafeArea(
@@ -49,26 +56,19 @@ class TasksScreen extends StatelessWidget {
     );
   }
 
-  FloatingActionButton floatingButton(BuildContext context) {
+  FloatingActionButton floatingButton(BuildContext context, height, width) {
     return FloatingActionButton.extended(
       backgroundColor: Natural.white,
       elevation: 4,
       onPressed: () {
         showModalBottomSheet(
+            isScrollControlled: true,
             context: context,
-            builder: (context) => Container(
-                  decoration: const BoxDecoration(
-                      color: Natural.white,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(32)),
-                      border: Border.symmetric(
-                          vertical: BorderSide(
-                              width: 1, color: SolidColors.grey100))),
-                child: Column(
-                  children: [
-                    
-                  ],
-                ),
+            builder: (context) => ShowModalSheet(
+                  dateController: dateController,
+                  controller: controller,
+                  height: height,
+                  width: width,
                 ));
       },
       label: Text(

@@ -7,9 +7,11 @@ import 'package:we_wed/routes/names.dart';
 import 'package:we_wed/routes/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
 
   runApp(const MainApp());
 }
