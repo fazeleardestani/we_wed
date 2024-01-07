@@ -33,7 +33,7 @@ class MainScreen extends StatelessWidget {
                   const ProfileScreen(),
                   HomeScreen(),
                   const ServiceScreen(),
-                  TasksScreen(),
+                  const TasksScreen(),
                 ],
               ),
             ),

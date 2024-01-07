@@ -11,6 +11,7 @@ class AuthMethods {
 
   Future<model.User> getUserDetails() async {
     User currentUser = _auth.currentUser!;
+    log("Current User ID: ${currentUser.uid}");
 
     DocumentSnapshot snapshot =
         await _firestore.collection('users').doc(currentUser.uid).get();
@@ -30,6 +31,7 @@ class AuthMethods {
         //register the user
         UserCredential credential = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
+        await credential.user!.updateDisplayName(name);
         //add user to database
         model.User user = model.User(
           uid: credential.user!.uid,
@@ -71,6 +73,7 @@ class AuthMethods {
       if (email.isNotEmpty && password.isNotEmpty) {
         await _auth.signInWithEmailAndPassword(
             email: email, password: password);
+
         res = "success";
       } else {
         res = MyStrings.enterAllTheFields;
@@ -112,14 +115,14 @@ class AuthMethods {
 
       if (userCredential.additionalUserInfo?.isNewUser ?? false) {
         res = 'new';
-        
+
         final CollectionReference users =
-          FirebaseFirestore.instance.collection('users');
-      users.doc(userCredential.user!.uid).set({
-        'uid': userCredential.user!.uid,
-        'displayName': userCredential.user!.displayName,
-        'email': userCredential.user!.email,
-      });
+            FirebaseFirestore.instance.collection('users');
+        users.doc(userCredential.user!.uid).set({
+          'uid': userCredential.user!.uid,
+          'displayName': userCredential.user!.displayName,
+          'email': userCredential.user!.email,
+        });
       } else {
         res = 'old';
       }

@@ -35,8 +35,8 @@ class MyStrings {
   static const String saveChanges = "ذخیره تغییرات";
   static const String logout = "خروج از حساب کاربری";
   static const String errorStatus = "مشکلی پیش آمده!";
-  static const String successStatus = 'عملیات با موفیت انجام شد';
-  static const String invalidEmail = "آدرس ایمیل نامعتبر است";
+  static const String successStatus = 'عملیات با موفقیت انجام شد.';
+  static const String invalidEmail = "آدرس ایمیل نامعتبر است!";
   static const String weakPassword =
       "رمز عبور ضعیف است. (حداقل باید 6 کاراکتر داشته باشد)";
   static const String emailAlreadyInUse =
@@ -52,6 +52,7 @@ class MyStrings {
   static const String addNewTask = 'فعالیت جدید';
   static const String taskTitle = 'عنوان';
   static const String taskDescription = 'توضیحات (اختیاری)';
+  static const String taskDescriptionTitle = 'توضیحات';
   static const String taskInfo = 'مشخصات فعالیت';
   static const String category = 'دسته بندی';
   static const String categoryTashrifat = 'تشریفات';
@@ -59,7 +60,13 @@ class MyStrings {
   static const String categoryArus = 'ملزومات عروس';
   static const String categoryDamad = 'ملزومات داماد';
   static const String categoryQeyre = 'سایر';
-  static const String pickDay = 'تنظیم تاریخ';
+  static const String pickDay = 'تنظیم تاریخ (اختیاری)';
   static const String addTask = 'ثبت فعالیت';
-  static const String successCreatedTask = 'فعالیت به لیست کارهای شما اضافه شد';
+  static const String noTask = 'هنوز فعالیتی اضافه نشده!';
+  static const String successCreatedTask =
+      'فعالیت به لیست کارهای شما اضافه شد.';
+  static const String cancel = 'انصراف';
+  static const String updateTask = 'به روزرسانی فعالیت';
+  static const String editTask = 'ویرایش فعالیت';
+  static const String date = 'تاریخ';
 }

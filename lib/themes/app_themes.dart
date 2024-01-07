@@ -102,7 +102,7 @@ class AppThemes {
         fontWeight: FontWeight.w500,
       ),
       displaySmall: TextStyle(
-        color: SolidColors.grey900,
+        color: SolidColors.violetText,
         fontSize: 14,
         fontFamily: 'Iranyekan',
         fontWeight: FontWeight.w400,

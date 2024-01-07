@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:we_wed/models/services_model.dart';
 
@@ -8,7 +7,6 @@ class ApiService {
 
   static Future<List<ServiceModel>> fetchServices() async {
     final response = await http.post(Uri.parse(apiUrl));
-    log(response.body);
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);

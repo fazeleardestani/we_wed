@@ -1,32 +1,34 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TaskModel {
-  String userId;
+  String taskId;
   String title;
   String description;
   String category;
-  Timestamp dateTime;
+  bool status;
+  String dateTime;
 
-  TaskModel({
-    required this.userId,
-    required this.title,
-    required this.description,
-    required this.dateTime,
-    required this.category,
-  });
+  TaskModel(
+      {required this.taskId,
+      required this.title,
+      this.description = '-',
+      required this.dateTime,
+      required this.category,
+      required this.status});
 
-  factory TaskModel.fromMap(String userId, Map<String, dynamic> data) {
+  factory TaskModel.fromMap(String taskId, Map<String, dynamic> data) {
     String title = data['title'];
     String description = data['description'];
     String category = data['category'];
-    Timestamp timestamp = data['dateTime'];
+    bool status = data['status'];
+    String dateTime = data['dateTime'];
 
     return TaskModel(
-      userId: userId,
+      taskId: taskId,
       title: title,
       description: description,
       category: category,
-      dateTime: timestamp,
+      status: status,
+      dateTime: dateTime,
     );
   }
 }

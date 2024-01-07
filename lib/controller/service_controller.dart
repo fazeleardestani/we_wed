@@ -8,7 +8,6 @@ class ServiceController extends GetxController {
 
   void fetchServices() async {
     try {
-      log(services.toString());
       List<ServiceModel> result = await ApiService.fetchServices();
       services.assignAll(result);
     } catch (error) {

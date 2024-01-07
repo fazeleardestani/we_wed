@@ -57,7 +57,6 @@ class CustomTextFieldWidget extends StatelessWidget {
         onChanged: (value) {
           // Handle the text input changes here if needed
         },
-        // style: selectedTextFieldTextStyle, TODO: style: selectedTextField
         decoration: InputDecoration(
           fillColor: boxColor,
           filled: true,

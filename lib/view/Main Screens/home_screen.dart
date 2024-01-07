@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:we_wed/controller/tasks_controller.dart';
 import 'package:we_wed/models/fake_data.dart';
 import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
@@ -16,6 +17,7 @@ import '../../widgets/show_snack_bar.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
   final MainController controller = Get.put(MainController());
+  final TasksController tasksController = Get.put(TasksController());
   final Uri _url =
       Uri.parse('https://digipostal.ir/tag/online-wedding-invitation');
 
@@ -24,6 +26,13 @@ class HomeScreen extends StatelessWidget {
     User user = FirebaseAuth.instance.currentUser!;
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+    double percent = 0.0;
+    int totalTasks = tasksController.tasks.length;
+
+    if (totalTasks != 0) {
+      percent =
+          (tasksController.completedTasks.length / totalTasks).clamp(0.0, 1.0);
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -54,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                       child: RichText(
                         text: TextSpan(
                           text:
-                              '${MyStrings.hi} ${user.displayName!.split(' ').first}!',
+                              '${MyStrings.hi} ${user.displayName?.split(' ').first}!',
                           style: Theme.of(context).textTheme.headlineSmall,
                           children: [
                             TextSpan(
@@ -110,7 +119,7 @@ class HomeScreen extends StatelessWidget {
                           alignment: MainAxisAlignment.center,
                           barRadius: const Radius.circular(100),
                           lineHeight: 5,
-                          percent: 0.1,
+                          percent: percent,
                           progressColor: SolidColors.violetPrimery,
                           backgroundColor: SolidColors.grey50,
                         ),
@@ -170,7 +179,10 @@ class HomeScreen extends StatelessWidget {
                           if (categoryList[index].id == 1) {
                             controller.selectedPageIndex.value = 2;
                           } else {
-                            showSnackBar(MyStrings.errorStatus, 'این دسته بندی هنوز اضافه نشده!' , Semantic.errorMain);
+                            showSnackBar(
+                                MyStrings.errorStatus,
+                                'این دسته بندی هنوز اضافه نشده!',
+                                Semantic.errorMain);
                           }
                         },
                         child: Column(
