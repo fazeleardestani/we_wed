@@ -1,10 +1,9 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:share_plus/share_plus.dart';
 import '../models/task_model.dart';
 import '../utils/my_colors.dart';
 import '../utils/my_strings.dart';
@@ -142,5 +141,16 @@ class TasksController extends GetxController {
     } catch (error) {
       log("Failed to update task: $error");
     }
+  }
+
+  void shareTaskData(TaskModel task) {
+    final taskText = '''
+    عنوان: ${task.title}
+    توضیحات: ${task.description}
+    تاریخ و زمان: ${task.dateTime}
+    دسته‌بندی: ${task.category}
+    ''';
+
+    Share.share(taskText, subject: 'اشتراک‌ گذاری تسک');
   }
 }

@@ -46,6 +46,18 @@ class ServiceScreen extends StatelessWidget {
             } else {
               return Column(
                 children: [
+                  // DropdownButton<String>(
+                  //   value: serviceController.selectedCity.value,
+                  //   items: cities.map((city) {
+                  //     return DropdownMenuItem<String>(
+                  //       value: city,
+                  //       child: Text(city),
+                  //     );
+                  //   }).toList(),
+                  //   onChanged: (selectedCity) {
+                  //     serviceController.setSelectedCity(selectedCity!);
+                  //   },
+                  // ),
                   Padding(
                     padding: EdgeInsets.only(
                         bottom: width / 31.25, top: width / 120),

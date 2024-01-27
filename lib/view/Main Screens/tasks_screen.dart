@@ -112,23 +112,32 @@ class _TasksScreenState extends State<TasksScreen> {
                         ],
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(12),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Checkbox(
-                                value: task.status,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    task.status = value!;
-                                  });
-                                  controller.updateTask(
-                                    name: 'status',
-                                    newData: value,
-                                    taskId: task.taskId,
-                                  );
-                                }),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 18),
+                              child: SizedBox(
+                                width: 16,
+                                height: 16,
+                                child: Checkbox(
+                                    value: task.status,
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        task.status = value!;
+                                      });
+                                      controller.updateTask(
+                                        name: 'status',
+                                        newData: value,
+                                        taskId: task.taskId,
+                                      );
+                                    }),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,7 +162,7 @@ class _TasksScreenState extends State<TasksScreen> {
                                     ),
                                     const SizedBox(width: 8),
                                     SizedBox(
-                                      width: width / 2.5,
+                                      width: width / 3,
                                       child: Text(
                                         task.description,
                                         overflow: TextOverflow.ellipsis,
@@ -174,7 +183,7 @@ class _TasksScreenState extends State<TasksScreen> {
                                     ),
                                     const SizedBox(width: 8),
                                     SizedBox(
-                                      width: width / 2.5,
+                                      width: width / 3,
                                       child: Text(
                                         task.dateTime,
                                         overflow: TextOverflow.ellipsis,
@@ -195,7 +204,7 @@ class _TasksScreenState extends State<TasksScreen> {
                                     ),
                                     const SizedBox(width: 8),
                                     SizedBox(
-                                      width: width / 2.5,
+                                      width: width / 3,
                                       child: Text(
                                         task.category,
                                         overflow: TextOverflow.ellipsis,
@@ -209,9 +218,8 @@ class _TasksScreenState extends State<TasksScreen> {
                                 ),
                               ],
                             ),
-                            const Spacer(),
                             SizedBox(
-                              width: width / 5,
+                              width: width / 2.7,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -233,6 +241,15 @@ class _TasksScreenState extends State<TasksScreen> {
                                       icon: const Icon(
                                         size: 24,
                                         Icons.delete,
+                                        color: SolidColors.violetPrimery,
+                                      )),
+                                  IconButton(
+                                      onPressed: () {
+                                        controller.shareTaskData(task);
+                                      },
+                                      icon: const Icon(
+                                        size: 24,
+                                        Icons.share,
                                         color: SolidColors.violetPrimery,
                                       ))
                                 ],

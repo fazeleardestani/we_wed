@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:we_wed/utils/my_colors.dart';
-import '../gen/assets.gen.dart';
+import '../../gen/assets.gen.dart';
 import 'package:get/get.dart';
-import '../routes/names.dart';
+import '../../routes/names.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,29 +24,6 @@ class _SplashScreenState extends State<SplashScreen> {
           Get.offAndToNamed(NamedRoute.mainScreen);
         }
       });
-      // StreamBuilder(
-      //   stream: FirebaseAuth.instance.authStateChanges(),
-      //   builder: (context, snapshot) {
-      //     if (snapshot.connectionState == ConnectionState.active) {
-      //       if (snapshot.hasData) {
-      //         return MainScreen();
-      //       } else if (snapshot.hasError) {
-      //         Center(
-      //           child: Text('${snapshot.error}'),
-      //         );
-      //       }
-      //     }
-      //     if (snapshot.connectionState == ConnectionState.waiting) {
-      //       return const Center(
-      //         child: CircularProgressIndicator(
-      //           color: SolidColors.violetPrimery,
-      //         ),
-      //       );
-      //     }
-      //     return SignUpScreen();
-      //   },
-      // );
-      // Get.offAndToNamed(NamedRoute.signUp);
     });
     super.initState();
   }

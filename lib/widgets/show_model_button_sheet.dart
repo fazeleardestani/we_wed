@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:we_wed/controller/date_picker_controller.dart';
 import 'package:we_wed/models/task_category.dart';
+import 'package:we_wed/widgets/local_notofication.dart';
 import 'package:we_wed/widgets/show_snack_bar.dart';
 import 'package:we_wed/widgets/text_field.dart';
 import '../controller/tasks_controller.dart';
 import '../utils/my_colors.dart';
 import '../utils/my_strings.dart';
 
-// ignore: must_be_immutable
 class ShowModalSheet extends StatefulWidget {
   final TasksController controller;
   final DatePickerController dateController;
@@ -28,7 +28,12 @@ class ShowModalSheet extends StatefulWidget {
 }
 
 class _ShowModalSheetState extends State<ShowModalSheet> {
-  RxString selectedCtegory = ''.obs;
+  RxString selectedCategory = ''.obs;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,23 +81,27 @@ class _ShowModalSheetState extends State<ShowModalSheet> {
             ),
             // Categories
             SizedBox(
-                height: widget.height / 16.91,
-                child: Obx(
-                  () => DropdownMenu(
-                      enableSearch: false,
-                      width: widget.width * 0.915,
-                      initialSelection: MyStrings.category,
-                      hintText: MyStrings.category,
-                      onSelected: (String? value) {
-                        selectedCtegory = value!.obs;
-                        widget.controller.dropdownValue = selectedCtegory;
-                      },
-                      dropdownMenuEntries: categoryList
-                          .map<DropdownMenuEntry<String>>((RxString value) {
-                        return DropdownMenuEntry<String>(
-                            value: value.value, label: value.value);
-                      }).toList()),
-                )),
+              height: widget.height / 16.91,
+              child: Obx(
+                () => DropdownMenu(
+                  enableSearch: false,
+                  width: widget.width * 0.935,
+                  initialSelection: MyStrings.category,
+                  hintText: MyStrings.category,
+                  onSelected: (String? value) {
+                    selectedCategory = value!.obs;
+                    widget.controller.dropdownValue = selectedCategory;
+                  },
+                  dropdownMenuEntries: categoryList
+                      .map<DropdownMenuEntry<String>>((RxString value) {
+                    return DropdownMenuEntry<String>(
+                      value: value.value,
+                      label: value.value,
+                    );
+                  }).toList(),
+                ),
+              ),
+            ),
 
             // Date picker
             InkWell(
@@ -118,7 +127,9 @@ class _ShowModalSheetState extends State<ShowModalSheet> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Obx(() => Text(
-                            widget.dateController.selectedDate.value == '-'
+                            widget.dateController.selectedDate.value == '-' ||
+                                    widget.dateController.selectedDate.value ==
+                                        ''
                                 ? MyStrings.pickDay
                                 : widget.dateController.selectedDate.value,
                             style: Theme.of(context)
@@ -134,32 +145,48 @@ class _ShowModalSheetState extends State<ShowModalSheet> {
                 ),
               ),
             ),
+
             // Create Button
             SizedBox(
-                height: 48,
-                width: double.maxFinite,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (widget.controller.titleController.text.isNotEmpty &&
-                        widget.controller.dropdownValue.value !=
-                            MyStrings.category) {
-                      widget.controller
-                          .createTask(widget.dateController.selectedDate);
-                      Get.back(); // Close the bottom sheet
-                    } else {
-                      showSnackBar(
-                        MyStrings.errorStatus,
-                        MyStrings.enterAllTheFields,
-                        Semantic.errorMain,
-                      );
+              height: 48,
+              width: double.maxFinite,
+              child: ElevatedButton(
+                onPressed: () async {
+                  if (widget.controller.titleController.text.isNotEmpty &&
+                      widget.controller.dropdownValue.value !=
+                          MyStrings.category) {
+                    // Create the task and schedule a notification
+                    widget.controller.createTask(
+                      widget.dateController.selectedDate,
+                    );
+
+                    if (widget.dateController.selectedDate.value != '-' ||
+                        widget.dateController.selectedDate.value != '') {
+                      // Register one-off notification task
+
+                      DateTime scheduledDate =
+                          DateTime.now().add(const Duration(seconds: 10));
+
+                      NotificationService().createScheduledNotification(0,
+                          'scheduled title', 'scheduled body', scheduledDate);
                     }
-                  },
-                  style: Theme.of(context).elevatedButtonTheme.style,
-                  child: Text(
-                    MyStrings.addTask,
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
-                )),
+
+                    Get.back(); // Close the bottom sheet
+                  } else {
+                    showSnackBar(
+                      MyStrings.errorStatus,
+                      MyStrings.enterAllTheFields,
+                      Semantic.errorMain,
+                    );
+                  }
+                },
+                style: Theme.of(context).elevatedButtonTheme.style,
+                child: Text(
+                  MyStrings.addTask,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+              ),
+            ),
           ],
         ),
       ),
