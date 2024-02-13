@@ -12,6 +12,7 @@ import 'package:we_wed/utils/my_colors.dart';
 import 'package:we_wed/utils/my_strings.dart';
 import '../../controller/main_controller.dart';
 import '../../gen/assets.gen.dart';
+import '../../routes/names.dart';
 import '../../widgets/show_snack_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -198,6 +199,46 @@ class HomeScreen extends StatelessWidget {
                       ),
                     );
                   },
+                ),
+                SizedBox(
+                  height: height / 29.36,
+                ),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(NamedRoute.costManagerScreen);
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: height / 11.77,
+                    decoration: BoxDecoration(
+                      color: Natural.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: SolidColors.grey50,
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.calculate,
+                          color: SolidColors.violetPrimery,
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          MyStrings.paymentManager,
+                          style: Theme.of(context).textTheme.labelLarge,
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: height / 29.36,

@@ -39,7 +39,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.readOnly = false,
     this.autofocus = true,
     required this.textInputType,
-    this.maxLines = 1
+    this.maxLines = 1,
   });
 
   @override
@@ -54,9 +54,6 @@ class CustomTextFieldWidget extends StatelessWidget {
         maxLines: maxLines,
         keyboardType: textInputType,
         controller: textEditingController,
-        onChanged: (value) {
-          // Handle the text input changes here if needed
-        },
         decoration: InputDecoration(
           fillColor: boxColor,
           filled: true,

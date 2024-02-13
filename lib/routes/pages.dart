@@ -6,6 +6,7 @@ import 'package:we_wed/view/Main%20Screens/service_screen.dart';
 import 'package:we_wed/view/Main%20Screens/tasks_screen.dart';
 import 'package:we_wed/view/Starter Screens/date_picker_screen.dart';
 import 'package:we_wed/view/Starter%20Screens/login_screen.dart';
+import 'package:we_wed/view/Sub%20Screens/cost_manager_screen.dart';
 import 'package:we_wed/view/Sub%20Screens/splash_screen.dart';
 import '../view/Starter Screens/signup_screen.dart';
 import '../view/Starter Screens/timeline_screen.dart';
@@ -43,14 +44,17 @@ class Pages {
       name: NamedRoute.homeScreen,
       page: () => HomeScreen(),
     ),
-     GetPage(
+    GetPage(
       name: NamedRoute.servicesScreen,
       page: () => const ServiceScreen(),
     ),
-     GetPage(
+    GetPage(
       name: NamedRoute.tasksScreen,
       page: () => const TasksScreen(),
     ),
-    
+    GetPage(
+      name: NamedRoute.costManagerScreen,
+      page: () => const CostManagerScreen(),
+    ),
   ];
 }

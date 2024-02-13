@@ -6,11 +6,13 @@ class User {
   final String? email;
   final String password;
   final String weddingDate;
+  int totalCost;
 
-  const User({
+  User({
     required this.uid,
     required this.name,
     required this.email,
+    required this.totalCost,
     this.password = "",
     this.weddingDate = "",
   });
@@ -20,18 +22,21 @@ class User {
         'displayName': name,
         'email': email,
         'password': password,
+        'totalCost': totalCost,
       };
 
-  static User fromSnap(DocumentSnapshot snap) {
+  factory User.fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
 
     String password = snapshot['password'] ?? "";
 
     return User(
-        uid: snapshot['uid'],
-        name: snapshot['displayName'],
-        email: snapshot['email'],
-        password: password,
-        weddingDate: snapshot['weddingDate']);
+      uid: snapshot['uid'],
+      name: snapshot['displayName'],
+      email: snapshot['email'],
+      password: password,
+      weddingDate: snapshot['weddingDate'],
+      totalCost: snapshot['totalCost'] ?? 0,
+    );
   }
 }

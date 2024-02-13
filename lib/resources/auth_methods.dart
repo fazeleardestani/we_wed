@@ -11,7 +11,7 @@ class AuthMethods {
 
   Future<model.User> getUserDetails() async {
     User currentUser = _auth.currentUser!;
-    log("Current User ID: ${currentUser.uid}");
+    // log("Current User ID: ${currentUser.uid}");
 
     DocumentSnapshot snapshot =
         await _firestore.collection('users').doc(currentUser.uid).get();
@@ -39,6 +39,7 @@ class AuthMethods {
           email: email,
           password: password,
           weddingDate: '',
+          totalCost: 0
         );
         _firestore
             .collection('users')
@@ -161,4 +162,13 @@ class AuthMethods {
         .catchError((error) => log("Failed to update user: $error"));
     return "success";
   }
+
+  Future<void> updateUserTotalCost(String uid, int totalCost) async {
+  await _firestore
+      .collection('users')
+      .doc(uid)
+      .update({'totalCost': totalCost})
+      .then((value) => log("Total Cost Updated"))
+      .catchError((error) => log("Failed to update total cost: $error"));
+}
 }

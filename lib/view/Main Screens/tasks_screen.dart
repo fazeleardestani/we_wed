@@ -47,6 +47,7 @@ class _TasksScreenState extends State<TasksScreen> {
               SvgPicture.asset(Assets.icons.bloomLeft.path),
             ],
           ),
+          
           bottom: const TabBar(
             tabs: [
               Tab(text: 'همه کارها'),

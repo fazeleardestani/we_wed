@@ -29,12 +29,3 @@ List<CategoryModel> categoryList = [
       imagePath: Assets.icons.lebasCategory.path,
       title: MyStrings.lebasCategory),
 ];
-
-List<UserModel> userList = [
-  UserModel(
-      id: 1,
-      email: "gkdifjgdfhih@gmail.com",
-      name: "فاطمه",
-      password: "gkdifjgdfhih",
-      weddingTime: "1403/03/03"),
-];

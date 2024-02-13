@@ -1,11 +1,15 @@
+import 'dart:developer';
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:we_wed/controller/date_picker_controller.dart';
 import 'package:we_wed/models/task_category.dart';
-import 'package:we_wed/widgets/local_notofication.dart';
+
 import 'package:we_wed/widgets/show_snack_bar.dart';
 import 'package:we_wed/widgets/text_field.dart';
 import '../controller/tasks_controller.dart';
+import '../services/notification_service.dart';
 import '../utils/my_colors.dart';
 import '../utils/my_strings.dart';
 
@@ -159,16 +163,29 @@ class _ShowModalSheetState extends State<ShowModalSheet> {
                     widget.controller.createTask(
                       widget.dateController.selectedDate,
                     );
+                    await NotificationService().showScheduledNotification(
+                      0, // شناسه منحصر به فرد نوتیفیکیشن
+                      'تست نوتیفیکیشن', // عنوان نوتیفیکیشن
+                      'این یک نوتیفیکیشن تستی است.', // متن نوتیفیکیشن
+                    );
 
-                    if (widget.dateController.selectedDate.value != '-' ||
+                    if (widget.dateController.selectedDate.value != '-' &&
                         widget.dateController.selectedDate.value != '') {
-                      // Register one-off notification task
+                      // Schedule a notification for the selected date
+                      String title = widget.controller.titleController.text;
+                      String body = 'You have a new task to complete.';
+                      String jalaliDate =
+                          widget.dateController.selectedDate.value;
 
-                      DateTime scheduledDate =
-                          DateTime.now().add(const Duration(seconds: 10));
-
-                      NotificationService().createScheduledNotification(0,
-                          'scheduled title', 'scheduled body', scheduledDate);
+                      // از NotificationService برای برنامه‌ریزی نوتیفیکیشن استفاده کنید
+                      // await NotificationService().showNotification(
+                      //   math.Random().nextInt(
+                      //       1000), // برای مثال، یک شناسه تصادفی برای نوتیفیکیشن
+                      //   title,
+                      //   body,
+                      //   jalaliDate,
+                      // );
+                      log('Notification scheduled for $jalaliDate');
                     }
 
                     Get.back(); // Close the bottom sheet

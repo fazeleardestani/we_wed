@@ -10,4 +10,5 @@ class NamedRoute {
   static String homeScreen = "/homeScreen";
   static String servicesScreen = "/servicesScreen";
   static String tasksScreen = "/tasksScreen";
+  static String costManagerScreen = "/costManagerScreen";
 }

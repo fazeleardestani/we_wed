@@ -30,6 +30,7 @@ class MyStrings {
   static const String services = "خدمات";
   static const String servicesList = "لیست خدمات";
   static const String tasksList = "لیست کارها";
+  static const String costList = "لیست هزینه ها";
   static const String inviteCard = "کارت دعوت";
   static const String editInformation = "ویرایش اطلاعات";
   static const String saveChanges = "ذخیره تغییرات";
@@ -50,9 +51,11 @@ class MyStrings {
   static const String hi = "سلام";
   static const String welcomeText = " از برنامه هات جا نمونی:)";
   static const String addNewTask = 'فعالیت جدید';
+  static const String addNewCost = 'هزینه جدید';
   static const String taskTitle = 'عنوان';
   static const String taskDescription = 'توضیحات (اختیاری)';
   static const String taskDescriptionTitle = 'توضیحات';
+  static const String costInt = 'هزینه ( تومان )';
   static const String taskInfo = 'مشخصات فعالیت';
   static const String category = 'دسته بندی';
   static const String categoryTashrifat = 'تشریفات';
@@ -62,11 +65,17 @@ class MyStrings {
   static const String categoryQeyre = 'سایر';
   static const String pickDay = 'تنظیم تاریخ (اختیاری)';
   static const String addTask = 'ثبت فعالیت';
+  static const String addCost = 'ثبت هزینه';
   static const String noTask = 'هنوز فعالیتی اضافه نشده!';
+  static const String noCost = 'هنوز هزینه ای اضافه نشده!';
   static const String successCreatedTask =
       'فعالیت به لیست کارهای شما اضافه شد.';
   static const String cancel = 'انصراف';
   static const String updateTask = 'به روزرسانی فعالیت';
   static const String editTask = 'ویرایش فعالیت';
   static const String date = 'تاریخ';
+  static const String paymentManagerScreen = 'مدیریت هزینه ها';
+  static const String paymentManager = 'هزینه های عروسی رو اینجا وارد کن';
+  static const String newCost = 'هزینه جدید';
+  static const String totalCost = 'هزینه کل';
 }
